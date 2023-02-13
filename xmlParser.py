@@ -1,7 +1,16 @@
 import xml.etree.ElementTree as ET
 import json
 
-tree = ET.parse("./acs.joc.5b00443.xml")  # improvement: change to argument based input
+with open('./test2.xml', 'r') as file:
+    filedata = file.read()
+
+filedata = filedata.replace('>&<', '>&amp;<')
+filedata = filedata.replace('><<', '>&lt;<')
+filedata = filedata.replace('>><', '>&gt;<')
+with open('./test2.xml', 'w') as file:
+  file.write(filedata)
+
+tree = ET.parse("./test2.xml")  # improvement: change to argument based input
 root = tree.getroot()
 
 output = {}
