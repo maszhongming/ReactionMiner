@@ -19,14 +19,7 @@ ignoredSections = [
     "Published:",
 ]
 
-weirdChar = {
-    "\u2212": "-",
-    "\ufb00": "ff",
-    "\ufb01": "fi",
-    "\ufb02": "fl",
-    "fraction(-)": "",
-    "\u25a0": "",
-}
+weirdChar = {"fraction(-)": ""}
 for word in root.iter("Word"):
     wordBuf = ""
     for char in word.iter("Char"):
@@ -37,17 +30,16 @@ for word in root.iter("Word"):
             continue
         # writing section title
         if char.attrib["RGB"] == "[1.0]":
-            if char.text != "\u25a0":
-                sectionTitleBuf += str(char.text)
+            sectionTitleBuf += str(char.text)
         # create new section
         elif sectionTitleBuf:
-            if sectionTitleBuf.strip() in ignoredSections:
+            if sectionTitleBuf.strip(" \u25a0") in ignoredSections:
                 sectionTitleBuf = ""
             else:
                 output[currSection] = output[currSection][
                     : -len(sectionTitleBuf) - 1
-                ]  # strip the end
-                sectionTitleBuf = sectionTitleBuf.strip().strip(":").lower()
+                ]  # strip the front and end
+                sectionTitleBuf = sectionTitleBuf.strip(" \u25a0:").lower()
                 output[sectionTitleBuf] = ""
                 currSection = sectionTitleBuf
                 sectionTitleBuf = ""
@@ -64,4 +56,4 @@ for word in root.iter("Word"):
 
 # print(output["allText"])
 with open("sample.json", "w") as outfile:
-    json.dump(output, outfile, indent=4)
+    json.dump(output, outfile, indent=4, ensure_ascii=False)
