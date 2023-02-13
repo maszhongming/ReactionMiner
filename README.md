@@ -1,5 +1,5 @@
 # ReactIE-PDF-Conversion
-This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. See copper_acetate.json as an example.
+This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. See [copper_acetate.json](/copper_acetate.json) as an example.
 
 ## Dependency
 This project depends on [zanibbi/SymbolScraper](https://github.com/zanibbi/SymbolScraper). Once compiled successfully, an executable called sscraper will be generated.
