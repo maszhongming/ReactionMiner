@@ -51,8 +51,7 @@ for word in root.iter("Word"):
     output["fullText"] += " " if wordBuf and wordBuf[-1] != "-" else ""
     output[currSection] += wordBuf
     output[currSection] += " " if wordBuf and wordBuf[-1] != "-" else ""
-    if sectionTitleBuf:
-        sectionTitleBuf += " "
+    sectionTitleBuf += " " if sectionTitleBuf else ""
 
 # print(output["allText"])
 with open("sample.json", "w") as outfile:
