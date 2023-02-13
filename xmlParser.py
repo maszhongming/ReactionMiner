@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import json
 
-tree = ET.parse("./acs.joc.5b00443.xml")
+tree = ET.parse("./acs.joc.5b00443.xml")  # improvement: change to argument based input
 root = tree.getroot()
 
 output = {}
@@ -11,6 +11,7 @@ output["title & info"] = ""
 sectionTitleBuf = ""  # keeps track of new section title, empty while populating section
 currSection = "title & info"
 
+# hardcode
 ignoredSections = [
     "The Journal of Organic Chemistry",
     "pubs.acs.org/joc",
@@ -18,17 +19,19 @@ ignoredSections = [
     "Received:",
     "Published:",
 ]
-
+# hardcode
 weirdChar = {"fraction(-)": ""}
 for word in root.iter("Word"):
     wordBuf = ""
     for char in word.iter("Char"):
 
         # ignore side vertical notes
+        # hardcode
         location = char.attrib["BBOX"].split(" ")[0]
         if location in ["9.0", "18.0"]:
             continue
         # writing section title
+        # hardcode
         if char.attrib["RGB"] == "[1.0]":
             sectionTitleBuf += str(char.text)
         # create new section
@@ -53,6 +56,5 @@ for word in root.iter("Word"):
     output[currSection] += " " if wordBuf and wordBuf[-1] != "-" else ""
     sectionTitleBuf += " " if sectionTitleBuf else ""
 
-# print(output["allText"])
 with open("sample.json", "w") as outfile:
     json.dump(output, outfile, indent=4, ensure_ascii=False)
