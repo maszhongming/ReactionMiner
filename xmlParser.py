@@ -1,16 +1,17 @@
 import xml.etree.ElementTree as ET
 import json
 
-with open('./test2.xml', 'r') as file:
+xmlPath = "copper_acetate.xml"
+with open(xmlPath, "r") as file:
     filedata = file.read()
 
-filedata = filedata.replace('>&<', '>&amp;<')
-filedata = filedata.replace('><<', '>&lt;<')
-filedata = filedata.replace('>><', '>&gt;<')
-with open('./test2.xml', 'w') as file:
-  file.write(filedata)
+filedata = filedata.replace(">&<", ">&amp;<")
+filedata = filedata.replace("><<", ">&lt;<")
+filedata = filedata.replace(">><", ">&gt;<")
+with open(xmlPath, "w") as file:
+    file.write(filedata)
 
-tree = ET.parse("./test2.xml")  # improvement: change to argument based input
+tree = ET.parse(xmlPath)  # improvement: change to argument based input
 root = tree.getroot()
 
 output = {}
