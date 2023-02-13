@@ -6,7 +6,9 @@ This project depends on [zanibbi/SymbolScraper](https://github.com/zanibbi/Symbo
 
 ## Usage
 First, generate xml file from zanibbi/SymbolScraper. In project directory run `./path_to_sscraper ./path_to_pdf ./`.
+
 Then, change the xmlPath variable in xmlParser.py to your generated xml file. 
+
 Lastly, in terminal run `python xmlParser.py`. If successful, a sample.json file with all the text information will be generated.
 
 ## Issues
