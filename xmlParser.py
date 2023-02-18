@@ -15,6 +15,18 @@ weirdChar = {
     "\u25a0": "",
 }
 
+ignoredSuffix = {
+    "*S Supporting Information",
+    "Received:",
+    "Published:",
+    "pubs.acs.org",
+    "©",
+    "J. Org. Chem. 2015, 80, 4116-4122",
+    "Article",
+    "The Journal of Organic Chemistry Article",
+    "DOI: "
+}
+
 
 def preParseXML(path):
     with open(path, "r") as file:
@@ -54,6 +66,13 @@ def checkSideLine(lineXml):
     return location in ["9.0", "18.0"]
 
 
+def checkIgnoredPrefix(line):
+    for prefix in ignoredSuffix:
+        if line.startswith(prefix):
+            return True
+    return False
+
+
 def main():
     preParseXML(xmlPath)
     tree = ET.parse(xmlPath)  # improvement: change to argument based input
@@ -79,18 +98,24 @@ def main():
     for lineXml in root.iter("Line"):
         if checkSideLine(lineXml):
             continue
+        line = ""
         for wordXml in lineXml.iter("Word"):
             if checkStartSection(wordXml):
                 sectionTitleBuf = ""
                 newSectionFlag = True
             word = buildWord(wordXml)
             # update outputs
-            output["fullText"] = updateText(output["fullText"], word)
             # non-section-title word goes into currSection, section-title word goes into sectionTitleBuf
-            if newSectionFlag:
-                sectionTitleBuf = updateText(sectionTitleBuf, word)
-            else:
-                output[currSection] = updateText(output[currSection], word)
+            line = updateText(line, word)
+        line = line.strip()
+        if checkIgnoredPrefix(line):
+            continue
+        print(line)
+        output["fullText"] = updateText(output["fullText"], line)
+        if newSectionFlag:
+            sectionTitleBuf = updateText(sectionTitleBuf, line)
+        else:
+            output[currSection] = updateText(output[currSection], line)
 
         # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
         if newSectionFlag and sectionTitleBuf:
