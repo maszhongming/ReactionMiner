@@ -12,5 +12,5 @@ Then, change the xmlPath variable in xmlParser.py to your generated xml file.
 Lastly, in terminal run `python xmlParser.py`. If successful, a sample.json file with all the text information will be generated.
 
 ## Issues
-- Currently designed to work well with The Journal of Organic Chemistry (lots of hardcode)
-- Can't parse test2.xml into correct sections yet (next step)
+- Currently designed to work well with The Journal of Organic Chemistry
+- Can't extract abstract section yet (next step)
