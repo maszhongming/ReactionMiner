@@ -24,7 +24,7 @@ ignoredSuffix = {
     "J. Org. Chem. 2015, 80, 4116-4122",
     "Article",
     "The Journal of Organic Chemistry Article",
-    "DOI: "
+    "DOI: ",
 }
 
 
@@ -72,6 +72,11 @@ def checkIgnoredPrefix(line):
             return True
     return False
 
+def outputJsonFile(xmlPath, output):
+    outputFileName = xmlPath.split('/')[-1].split('.')[0] + '.json'
+    with open(outputFileName, "w") as outfile:
+        json.dump(output, outfile, indent=4)
+    print('Parsed pdf successfully written to', outputFileName)
 
 def main():
     preParseXML(xmlPath)
@@ -82,14 +87,6 @@ def main():
     # keeps track of new section title, empty while populating section
     sectionTitleBuf = ""
     currSection = "title & info"
-
-    # ignoredSections = [
-    #     "The Journal of Organic Chemistry",
-    #     "pubs.acs.org/joc",
-    #     "*",
-    #     "Received:",
-    #     "Published:",
-    # ]
 
     newSectionFlag = False
 
@@ -110,7 +107,7 @@ def main():
         line = line.strip()
         if checkIgnoredPrefix(line):
             continue
-        print(line)
+        # print(line)
         output["fullText"] = updateText(output["fullText"], line)
         if newSectionFlag:
             sectionTitleBuf = updateText(sectionTitleBuf, line)
@@ -124,8 +121,7 @@ def main():
             sectionTitleBuf = ""
             newSectionFlag = False
 
-    with open("sample.json", "w") as outfile:
-        json.dump(output, outfile, indent=4)
+    outputJsonFile(xmlPath, output)
 
 
 main()
