@@ -1,76 +1,87 @@
 import xml.etree.ElementTree as ET
+import collections
 import json
 
-xmlPath = "copper_acetate.xml"
-with open(xmlPath, "r") as file:
-    filedata = file.read()
+# xmlPath = "copper_acetate.xml"
+xmlPath = "test2.xml"
 
-filedata = filedata.replace(">&<", ">&amp;<")
-filedata = filedata.replace("><<", ">&lt;<")
-filedata = filedata.replace(">><", ">&gt;<")
-with open(xmlPath, "w") as file:
-    file.write(filedata)
 
-tree = ET.parse(xmlPath)  # improvement: change to argument based input
-root = tree.getroot()
+def preParseXML(path):
+    with open(path, "r") as file:
+        filedata = file.read()
+    filedata = filedata.replace(">&<", ">&amp;<")
+    filedata = filedata.replace("><<", ">&lt;<")
+    filedata = filedata.replace(">><", ">&gt;<")
+    with open(path, "w") as file:
+        file.write(filedata)
 
-output = {}
-output["fullText"] = ""
-output["title & info"] = ""
 
-sectionTitleBuf = ""  # keeps track of new section title, empty while populating section
-currSection = "title & info"
+def main():
+    preParseXML(xmlPath)
+    tree = ET.parse(xmlPath)  # improvement: change to argument based input
+    root = tree.getroot()
 
-# hardcode
-ignoredSections = [
-    "The Journal of Organic Chemistry",
-    "pubs.acs.org/joc",
-    "*",
-    "Received:",
-    "Published:",
-]
+    output = collections.defaultdict(str)
+    # keeps track of new section title, empty while populating section
+    sectionTitleBuf = ""
+    currSection = "title & info"
 
-# hardcode
-weirdChar = {
-    "\u2212": "-", # long dash
-    "\ufb00": "ff",
-    "\ufb01": "fi",
-    "\ufb02": "fl",
-    "\u25a0": "", # black block
-    "fraction(-)": "", # weird output of SymbolScraper
-}
-for word in root.iter("Word"):
-    wordBuf = ""
-    for char in word.iter("Char"):
+    ignoredSections = [
+        "The Journal of Organic Chemistry",
+        "pubs.acs.org/joc",
+        "*",
+        "Received:",
+        "Published:",
+    ]
 
-        # ignore side vertical notes (hardcode)
-        location = char.attrib["BBOX"].split(" ")[0]
-        if location in ["9.0", "18.0"]:
-            continue
+    weirdChar = {
+        "\u2212": "-",  # long dash
+        "\ufb00": "ff",
+        "\ufb01": "fi",
+        "\ufb02": "fl",
+        "fraction(-)": "",  # weird output of SymbolScraper
+        "\u25a0": "",
+    }
 
-        # writing section title (hardcode)
-        if char.attrib["RGB"] == "[1.0]":
-            sectionTitleBuf += str(char.text)
-        # create new section
-        elif sectionTitleBuf:
-            if sectionTitleBuf.strip(" \u25a0") in ignoredSections:
-                sectionTitleBuf = ""
+    newSectionFlag = False
+    # parsing logic: check the black square, flag=1 when square is encountered
+    # use the next line as newSectionTitle
+    for line in root.iter("Line"):
+        for word in line.iter("Word"):
+            wordBuf = ""
+            for char in word.iter("Char"):
+                # detect blue square for new section
+                if char.text == "\u25a0":
+                    print("here")
+                    sectionTitleBuf = ""
+                    newSectionFlag = True
+                    continue
+                # build word
+                wordBuf += (
+                    weirdChar[str(char.text)]
+                    if char.text in weirdChar
+                    else str(char.text)
+                )
+
+            # update fullText and currSection with spaces
+            # every word goes into fullText
+            output["fullText"] += wordBuf
+            output["fullText"] += " " if wordBuf and wordBuf[-1] != "-" else ""
+            # non-section-title word goes into currSection, section-title word goes into sectionTitleBuf
+            if newSectionFlag:
+                sectionTitleBuf += wordBuf
+                sectionTitleBuf += " " if wordBuf else ""
             else:
-                output[currSection] = output[currSection][
-                    : -len(sectionTitleBuf) - 1
-                ]  # strip the front and end
-                sectionTitleBuf = sectionTitleBuf.strip(" \u25a0:").lower()
-                output[sectionTitleBuf] = ""
-                currSection = sectionTitleBuf
-                sectionTitleBuf = ""
+                output[currSection] += wordBuf
+                output[currSection] += " " if wordBuf and wordBuf[-1] != "-" else ""
 
-        # replace weirdly parsed unicode with actual text
-        wordBuf += weirdChar[str(char.text)] if char.text in weirdChar else str(char.text)
-    output["fullText"] += wordBuf
-    output["fullText"] += " " if wordBuf and wordBuf[-1] != "-" else ""
-    output[currSection] += wordBuf
-    output[currSection] += " " if wordBuf and wordBuf[-1] != "-" else ""
-    sectionTitleBuf += " " if sectionTitleBuf else ""
+        # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
+        if newSectionFlag and sectionTitleBuf:
+            newSectionFlag = False
+            currSection = sectionTitleBuf.strip().lower()
+            sectionTitleBuf = ""
 
-with open("sample.json", "w") as outfile:
-    json.dump(output, outfile, indent=4)
+    with open("sample.json", "w") as outfile:
+        json.dump(output, outfile, indent=4)
+
+main()
