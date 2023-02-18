@@ -13,4 +13,4 @@ Lastly, in terminal run `python xmlParser.py`. If successful, a sample.json file
 
 ## Issues
 - Currently designed to work well with The Journal of Organic Chemistry
-- Can't extract abstract section yet (next step)
+
