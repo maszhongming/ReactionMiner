@@ -29,19 +29,26 @@ ignoredSections = [
     "Received:",
     "Published:",
 ]
+
 # hardcode
-weirdChar = {"fraction(-)": ""}
+weirdChar = {
+    "\u2212": "-", # long dash
+    "\ufb00": "ff",
+    "\ufb01": "fi",
+    "\ufb02": "fl",
+    "\u25a0": "", # black block
+    "fraction(-)": "", # weird output of SymbolScraper
+}
 for word in root.iter("Word"):
     wordBuf = ""
     for char in word.iter("Char"):
 
-        # ignore side vertical notes
-        # hardcode
+        # ignore side vertical notes (hardcode)
         location = char.attrib["BBOX"].split(" ")[0]
         if location in ["9.0", "18.0"]:
             continue
-        # writing section title
-        # hardcode
+
+        # writing section title (hardcode)
         if char.attrib["RGB"] == "[1.0]":
             sectionTitleBuf += str(char.text)
         # create new section
@@ -56,10 +63,9 @@ for word in root.iter("Word"):
                 output[sectionTitleBuf] = ""
                 currSection = sectionTitleBuf
                 sectionTitleBuf = ""
-        if char.text in weirdChar:
-            wordBuf += weirdChar[str(char.text)]
-            continue
-        wordBuf += str(char.text)
+
+        # replace weirdly parsed unicode with actual text
+        wordBuf += weirdChar[str(char.text)] if char.text in weirdChar else str(char.text)
     output["fullText"] += wordBuf
     output["fullText"] += " " if wordBuf and wordBuf[-1] != "-" else ""
     output[currSection] += wordBuf
@@ -67,4 +73,4 @@ for word in root.iter("Word"):
     sectionTitleBuf += " " if sectionTitleBuf else ""
 
 with open("sample.json", "w") as outfile:
-    json.dump(output, outfile, indent=4, ensure_ascii=False)
+    json.dump(output, outfile, indent=4)
