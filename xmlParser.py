@@ -32,6 +32,11 @@ ignoredSuffix = {
     "https://doi.org/",
 }
 
+singleParagraphSection = [
+    "abstract",
+    "title & info",
+]
+
 
 def preParseXML(path):
     with open(path, "r") as file:
@@ -43,10 +48,14 @@ def preParseXML(path):
         file.write(filedata)
 
 
-def updateText(text, word):
-    text += word
-    text += " " if word and word[-1] != "-" else ""
-    return text
+def updateText(inputObject, word):
+    if isinstance(inputObject, str):
+        inputObject += word
+        inputObject += " " if word and word[-1] != "-" else ""
+    else:
+        inputObject[-1] += word
+        inputObject[-1] += " " if word and word[-1] != "-" else ""
+    return inputObject
 
 
 def checkStartSection(lineXml):
@@ -85,25 +94,52 @@ def outputJsonFile(xmlPath, output):
     print("Parsed pdf successfully written to", outputFileName)
 
 
+def findOffset(root):
+    lineStartPos = collections.defaultdict(int)
+    for lineXml in root.iter("Line"):
+        location = round(float(lineXml.attrib["BBOX"].split(" ")[0]))
+        lineStartPos[location] += 1
+    twoMean = sorted(lineStartPos.items(), key=lambda x: x[1], reverse=True)[:2]
+    res = [twoMean[0][0], twoMean[1][0]]
+    return res
+
+
+def checkStartParagrph(lineXml, paragraphStart):
+    location = round(float(lineXml.attrib["BBOX"].split(" ")[0]))
+    return location - 9 in paragraphStart or location - 10 in paragraphStart
+
+
 def main():
     for inputXml in xmlPaths:
-        # print(inputXml)
         preParseXML(inputXml)
         tree = ET.parse(inputXml)  # improvement: change to argument based input
         root = tree.getroot()
 
-        output = collections.defaultdict(str)
+        output = {}
+        output["fullText"] = ""
+        output["title & info"] = ""
+        output["abstract"] = ""
         currSection = "title & info"
         newSectionFlag = False
+
+        paragraphStart = findOffset(root)
 
         # parsing logic: check the black square, flag=1 when square is encountered
         # use the next line as new section title
         for lineXml in root.iter("Line"):
+
             if checkSideLine(lineXml):
                 continue
             if checkStartSection(lineXml):
                 newSectionFlag = True
                 continue
+            if (
+                checkStartParagrph(lineXml, paragraphStart)
+                and currSection not in singleParagraphSection
+                and output[currSection][-1]
+            ):
+                output[currSection][-1] = output[currSection][-1].strip()
+                output[currSection].append("")
             line = ""
             for wordXml in lineXml.iter("Word"):
                 word = buildWord(wordXml)
@@ -111,18 +147,22 @@ def main():
             line = line.strip()
             if checkIgnoredPrefix(line):
                 continue
-            # print(line)
 
             # update outputs
             output["fullText"] = updateText(output["fullText"], line)
             # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
             # either write to a new section title or an existing section's content
             if newSectionFlag:
-                output[currSection] = output[currSection].strip()
+                if currSection in singleParagraphSection:
+                    output[currSection] = output[currSection].strip()
+                else:
+                    output[currSection][-1] = output[currSection][-1].strip()
                 currSection = line.lower()
+                output[currSection] = []
+                output[currSection].append("")
                 newSectionFlag = False
             elif line.lower().startswith("abstract:"):
-                output[currSection] = output[currSection].strip()
+                output["title & info"] = output[currSection].strip()
                 currSection = "abstract"
                 output["abstract"] += line[len("abstract:") :].strip()
             else:
