@@ -2,8 +2,18 @@ import xml.etree.ElementTree as ET
 import collections
 import json
 
-# xmlPath = "copper_acetate.xml"
-xmlPath = "test2.xml"
+xmlPath = "copper_acetate.xml"
+# xmlPath = "test2.xml"
+
+
+weirdChar = {
+    "\u2212": "-",  # long dash
+    "\ufb00": "ff",
+    "\ufb01": "fi",
+    "\ufb02": "fl",
+    "fraction(-)": "",  # weird output of SymbolScraper
+    "\u25a0": "",
+}
 
 
 def preParseXML(path):
@@ -16,6 +26,34 @@ def preParseXML(path):
         file.write(filedata)
 
 
+def updateText(text, word):
+    text += word
+    text += " " if word and word[-1] != "-" else ""
+    return text
+
+
+def checkStartSection(wordXml):
+    for char in wordXml.iter("Char"):
+        # detect blue square for new section
+        if char.text == "\u25a0":
+            return True
+    return False
+
+
+def buildWord(wordXml):
+    wordBuf = ""
+    for char in wordXml.iter("Char"):
+        wordBuf += (
+            weirdChar[str(char.text)] if char.text in weirdChar else str(char.text)
+        )
+    return wordBuf
+
+
+def checkSideLine(lineXml):
+    location = lineXml.attrib["BBOX"].split(" ")[0]
+    return location in ["9.0", "18.0"]
+
+
 def main():
     preParseXML(xmlPath)
     tree = ET.parse(xmlPath)  # improvement: change to argument based input
@@ -26,62 +64,43 @@ def main():
     sectionTitleBuf = ""
     currSection = "title & info"
 
-    ignoredSections = [
-        "The Journal of Organic Chemistry",
-        "pubs.acs.org/joc",
-        "*",
-        "Received:",
-        "Published:",
-    ]
-
-    weirdChar = {
-        "\u2212": "-",  # long dash
-        "\ufb00": "ff",
-        "\ufb01": "fi",
-        "\ufb02": "fl",
-        "fraction(-)": "",  # weird output of SymbolScraper
-        "\u25a0": "",
-    }
+    # ignoredSections = [
+    #     "The Journal of Organic Chemistry",
+    #     "pubs.acs.org/joc",
+    #     "*",
+    #     "Received:",
+    #     "Published:",
+    # ]
 
     newSectionFlag = False
-    # parsing logic: check the black square, flag=1 when square is encountered
-    # use the next line as newSectionTitle
-    for line in root.iter("Line"):
-        for word in line.iter("Word"):
-            wordBuf = ""
-            for char in word.iter("Char"):
-                # detect blue square for new section
-                if char.text == "\u25a0":
-                    print("here")
-                    sectionTitleBuf = ""
-                    newSectionFlag = True
-                    continue
-                # build word
-                wordBuf += (
-                    weirdChar[str(char.text)]
-                    if char.text in weirdChar
-                    else str(char.text)
-                )
 
-            # update fullText and currSection with spaces
-            # every word goes into fullText
-            output["fullText"] += wordBuf
-            output["fullText"] += " " if wordBuf and wordBuf[-1] != "-" else ""
+    # parsing logic: check the black square, flag=1 when square is encountered
+    # use the next line as new section title
+    for lineXml in root.iter("Line"):
+        if checkSideLine(lineXml):
+            continue
+        for wordXml in lineXml.iter("Word"):
+            if checkStartSection(wordXml):
+                sectionTitleBuf = ""
+                newSectionFlag = True
+            word = buildWord(wordXml)
+            # update outputs
+            output["fullText"] = updateText(output["fullText"], word)
             # non-section-title word goes into currSection, section-title word goes into sectionTitleBuf
             if newSectionFlag:
-                sectionTitleBuf += wordBuf
-                sectionTitleBuf += " " if wordBuf else ""
+                sectionTitleBuf = updateText(sectionTitleBuf, word)
             else:
-                output[currSection] += wordBuf
-                output[currSection] += " " if wordBuf and wordBuf[-1] != "-" else ""
+                output[currSection] = updateText(output[currSection], word)
 
         # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
         if newSectionFlag and sectionTitleBuf:
-            newSectionFlag = False
+            output[currSection] = output[currSection].strip()
             currSection = sectionTitleBuf.strip().lower()
             sectionTitleBuf = ""
+            newSectionFlag = False
 
     with open("sample.json", "w") as outfile:
         json.dump(output, outfile, indent=4)
+
 
 main()
