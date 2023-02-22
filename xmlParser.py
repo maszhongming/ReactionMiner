@@ -115,7 +115,8 @@ def checkStartParagrph(lineXml, paragraphStart):
 
 def main(inputfile: str):
     intermediate_directory = "./intermediateXMLs"
-    os.system("SymbolScraper/bin/sscraper testFiles/acs_medicinal_chemistry_letters/acs.jmedchem.3c00106.pdf " + intermediate_directory)
+    print("SymbolScraper/bin/sscraper " + inputfile + " " + intermediate_directory)
+    os.system("SymbolScraper/bin/sscraper " + inputfile + " " + intermediate_directory)
     # for inputXml in xmlPaths:
     for filename in os.listdir(intermediate_directory):
         if filename.endswith(".xml"): 
