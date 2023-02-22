@@ -4,9 +4,6 @@ import json
 import os
 import sys, getopt
 
-# xmlPaths = ["copper_acetate.xml", "test2.xml"]
-
-
 weirdChar = {
     "\u2212": "-",  # long dash
     "\ufb00": "ff",
@@ -90,7 +87,6 @@ def checkIgnoredPrefix(line):
 
 
 def outputJsonFile(xmlPath, output):
-    # outputFileName = xmlPath.split("/")[-1].split(".")[0] + ".json"
     outputFileName = xmlPath.split("/")[-1][:-4] + ".json"
     path = os.getcwd()
     result_directory = path + '/result/'
@@ -199,11 +195,4 @@ if __name__ == "__main__":
                 sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
-        # if opt == '-h':
-        #         print ('test.py -i <inputfile> -o <outputfile>')
-        #         sys.exit()
-        # elif opt in ("-i", "--ifile"):
-        #     inputfile = arg
-        # elif opt in ("-o", "--ofile"):
-        #     outputfile = arg
     main(inputfile)
