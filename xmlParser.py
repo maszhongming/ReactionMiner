@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import collections
 import json
+import os
+import sys, getopt
 
 # xmlPaths = ["copper_acetate.xml", "test2.xml"]
 
@@ -88,7 +90,8 @@ def checkIgnoredPrefix(line):
 
 
 def outputJsonFile(xmlPath, output):
-    outputFileName = xmlPath.split("/")[-1].split(".")[0] + ".json"
+    # outputFileName = xmlPath.split("/")[-1].split(".")[0] + ".json"
+    outputFileName = xmlPath.split("/")[-1][:-4] + ".json"
     with open(outputFileName, "w") as outfile:
         json.dump(output, outfile, indent=4)
     print("Parsed pdf successfully written to", outputFileName)
@@ -109,66 +112,74 @@ def checkStartParagrph(lineXml, paragraphStart):
     return location - 9 in paragraphStart or location - 10 in paragraphStart
 
 
-def main(inputXml: str):
+def main(inputfile: str):
+    intermediate_directory = "./intermediateXMLs"
+    os.system("SymbolScraper/bin/sscraper testFiles/acs_medicinal_chemistry_letters/acs.jmedchem.3c00106.pdf " + intermediate_directory)
     # for inputXml in xmlPaths:
-        preParseXML(inputXml)
-        tree = ET.parse(inputXml)  # improvement: change to argument based input
-        root = tree.getroot()
+    for filename in os.listdir(intermediate_directory):
+        if filename.endswith(".xml"): 
+            inputXml = os.path.join(intermediate_directory, filename)
+            parse(inputXml)
 
-        output = {}
-        output["fullText"] = ""
-        output["title & info"] = ""
-        output["abstract"] = ""
-        currSection = "title & info"
-        newSectionFlag = False
+def parse(inputXml: str):   
+    preParseXML(inputXml)
+    tree = ET.parse(inputXml)  # improvement: change to argument based input
+    root = tree.getroot()
 
-        paragraphStart = findOffset(root)
+    output = {}
+    output["fullText"] = ""
+    output["title & info"] = ""
+    output["abstract"] = ""
+    currSection = "title & info"
+    newSectionFlag = False
 
-        # parsing logic: check the black square, flag=1 when square is encountered
-        # use the next line as new section title
-        for lineXml in root.iter("Line"):
+    paragraphStart = findOffset(root)
 
-            if checkSideLine(lineXml):
-                continue
-            if checkStartSection(lineXml):
-                newSectionFlag = True
-                continue
-            if (
-                checkStartParagrph(lineXml, paragraphStart)
-                and currSection not in singleParagraphSection
-                and output[currSection][-1]
-            ):
-                output[currSection][-1] = output[currSection][-1].strip()
-                output[currSection].append("")
-            line = ""
-            for wordXml in lineXml.iter("Word"):
-                word = buildWord(wordXml)
-                line = updateText(line, word)
-            line = line.strip()
-            if checkIgnoredPrefix(line):
-                continue
+    # parsing logic: check the black square, flag=1 when square is encountered
+    # use the next line as new section title
+    for lineXml in root.iter("Line"):
 
-            # update outputs
-            output["fullText"] = updateText(output["fullText"], line)
-            # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
-            # either write to a new section title or an existing section's content
-            if newSectionFlag:
-                if currSection in singleParagraphSection:
-                    output[currSection] = output[currSection].strip()
-                else:
-                    output[currSection][-1] = output[currSection][-1].strip()
-                currSection = line.lower()
-                output[currSection] = []
-                output[currSection].append("")
-                newSectionFlag = False
-            elif line.lower().startswith("abstract:"):
-                output["title & info"] = output[currSection].strip()
-                currSection = "abstract"
-                output["abstract"] += line[len("abstract:") :].strip()
+        if checkSideLine(lineXml):
+            continue
+        if checkStartSection(lineXml):
+            newSectionFlag = True
+            continue
+        if (
+            checkStartParagrph(lineXml, paragraphStart)
+            and currSection not in singleParagraphSection
+            and output[currSection][-1]
+        ):
+            output[currSection][-1] = output[currSection][-1].strip()
+            output[currSection].append("")
+        line = ""
+        for wordXml in lineXml.iter("Word"):
+            word = buildWord(wordXml)
+            line = updateText(line, word)
+        line = line.strip()
+        if checkIgnoredPrefix(line):
+            continue
+
+        # update outputs
+        output["fullText"] = updateText(output["fullText"], line)
+        # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
+        # either write to a new section title or an existing section's content
+        if newSectionFlag:
+            if currSection in singleParagraphSection:
+                output[currSection] = output[currSection].strip()
             else:
-                output[currSection] = updateText(output[currSection], line)
+                output[currSection][-1] = output[currSection][-1].strip()
+            currSection = line.lower()
+            output[currSection] = []
+            output[currSection].append("")
+            newSectionFlag = False
+        elif line.lower().startswith("abstract:"):
+            output["title & info"] = output[currSection].strip()
+            currSection = "abstract"
+            output["abstract"] += line[len("abstract:") :].strip()
+        else:
+            output[currSection] = updateText(output[currSection], line)
 
-        outputJsonFile(inputXml, output)
+    outputJsonFile(inputXml, output)
 
 
 if __name__ == "__main__":
