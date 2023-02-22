@@ -92,6 +92,11 @@ def checkIgnoredPrefix(line):
 def outputJsonFile(xmlPath, output):
     # outputFileName = xmlPath.split("/")[-1].split(".")[0] + ".json"
     outputFileName = xmlPath.split("/")[-1][:-4] + ".json"
+    path = os.getcwd()
+    result_directory = path + '/result/'
+    if not os.path.exists(result_directory):
+        os.mkdir(result_directory)
+    outputFileName = result_directory + outputFileName
     with open(outputFileName, "w") as outfile:
         json.dump(output, outfile, indent=4)
     print("Parsed pdf successfully written to", outputFileName)
@@ -120,6 +125,7 @@ def main(inputfile: str):
         if filename.endswith(".xml"): 
             inputXml = os.path.join(intermediate_directory, filename)
             parse(inputXml)
+            os.remove(inputXml)
 
 def parse(inputXml: str):   
     preParseXML(inputXml)
@@ -189,10 +195,15 @@ if __name__ == "__main__":
     opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
     for opt, arg in opts:
         if opt == '-h':
-                print ('test.py -i <inputfile> -o <outputfile>')
+                print ('test.py -i <inputfile> \nResult will be saved as a .json in ./result/...')
                 sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
-        elif opt in ("-o", "--ofile"):
-            outputfile = arg
+        # if opt == '-h':
+        #         print ('test.py -i <inputfile> -o <outputfile>')
+        #         sys.exit()
+        # elif opt in ("-i", "--ifile"):
+        #     inputfile = arg
+        # elif opt in ("-o", "--ofile"):
+        #     outputfile = arg
     main(inputfile)
