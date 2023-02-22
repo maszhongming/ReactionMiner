@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import collections
 import json
 
-xmlPaths = ["copper_acetate.xml", "test2.xml"]
+# xmlPaths = ["copper_acetate.xml", "test2.xml"]
 
 
 weirdChar = {
@@ -109,8 +109,8 @@ def checkStartParagrph(lineXml, paragraphStart):
     return location - 9 in paragraphStart or location - 10 in paragraphStart
 
 
-def main():
-    for inputXml in xmlPaths:
+def main(inputXml: str):
+    # for inputXml in xmlPaths:
         preParseXML(inputXml)
         tree = ET.parse(inputXml)  # improvement: change to argument based input
         root = tree.getroot()
@@ -171,4 +171,17 @@ def main():
         outputJsonFile(inputXml, output)
 
 
-main()
+if __name__ == "__main__":
+    argv = sys.argv[1:]
+    inputfile = ''
+    outputfile = ''
+    opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+    for opt, arg in opts:
+        if opt == '-h':
+                print ('test.py -i <inputfile> -o <outputfile>')
+                sys.exit()
+        elif opt in ("-i", "--ifile"):
+            inputfile = arg
+        elif opt in ("-o", "--ofile"):
+            outputfile = arg
+    main(inputfile)
