@@ -9,7 +9,7 @@ First, generate xml file from zanibbi/SymbolScraper. In project directory run `.
 
 Then, change the xmlPath variable in xmlParser.py to your generated xml file. 
 
-Lastly, in terminal run `python xmlParser.py`. If successful, a sample.json file with all the text information will be generated.
+Lastly, in terminal run `python xmlParser.py -i /path/to/pdf`. If successful, a sample.json file with all the text information will be generated.
 
 ## Issues
 - Currently designed to work well with The Journal of Organic Chemistry
