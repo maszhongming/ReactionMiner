@@ -10,6 +10,7 @@ weirdChar = {
     "\ufb00": "ff",
     "\ufb01": "fi",
     "\ufb02": "fl",
+    "\ufb03": "ffi",
     "fraction(-)": "",  # weird output of SymbolScraper
     "\u25a0": "",
 }
@@ -115,18 +116,19 @@ def checkStartParagrph(lineXml, paragraphStart):
 
 
 def checkEndOfPage(text):
-    # print(text)
-    if re.match('^(scheme|table|figure) [1-9]. ', text):
+    if re.match("^(scheme|table|figure) [1-9]. ", text):
         return True
     else:
         return False
 
-def main(inputfile: str):
+
+def parseFile(inputfile: str):
     temp_dir = "./xmlFiles"
     if not os.path.exists(temp_dir):
         os.mkdir(temp_dir)
     print("sscraper " + inputfile + " " + temp_dir)
     os.system(
+        # "SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + " > /dev/null"
         "SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + " > /dev/null"
     )
     # for inputXml in xmlPaths:
@@ -198,7 +200,6 @@ def parse(inputXml: str):
                 currSection = "abstract"
                 output["abstract"] += line[len("abstract:") :].strip()
             elif checkEndOfPage(line.lower()):
-                print('here')
                 break
             else:
                 output[currSection] = updateText(output[currSection], line)
@@ -215,7 +216,12 @@ if __name__ == "__main__":
             print("[Usage]: python3 xmlParser.py -i <inputPDF>")
             print("Result will be saved as a .json in ./result/")
             sys.exit()
-        # elif opt == "-i":
-        else:
+        elif opt == "-i":
             inputfile = arg
-            main(inputfile)
+            parseFile(inputfile)
+    if not opts:
+        target_dir = os.path.join(os.getcwd(), "Thrust1CheckpointPDF")
+        for filename in os.listdir(target_dir):
+            if filename.endswith(".pdf"):
+                inputPDF = os.path.join(target_dir, filename)
+                parseFile(inputPDF)
