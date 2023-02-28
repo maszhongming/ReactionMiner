@@ -89,7 +89,7 @@ def checkIgnoredPrefix(line):
 def outputJsonFile(xmlPath, output):
     outputFileName = xmlPath.split("/")[-1][:-4] + ".json"
     path = os.getcwd()
-    result_directory = path + '/result/'
+    result_directory = path + "/result/"
     if not os.path.exists(result_directory):
         os.mkdir(result_directory)
     outputFileName = result_directory + outputFileName
@@ -114,17 +114,21 @@ def checkStartParagrph(lineXml, paragraphStart):
 
 
 def main(inputfile: str):
-    intermediate_directory = "./intermediateXMLs"
-    print("SymbolScraper/bin/sscraper " + inputfile + " " + intermediate_directory)
-    os.system("SymbolScraper/bin/sscraper " + inputfile + " " + intermediate_directory)
+    temp_dir = "./xmlFiles"
+    if not os.path.exists(temp_dir):
+        os.mkdir(temp_dir)
+    print("sscraper " + inputfile + " " + temp_dir)
+    os.system("SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + ' > /dev/null') 
     # for inputXml in xmlPaths:
-    for filename in os.listdir(intermediate_directory):
-        if filename.endswith(".xml"): 
-            inputXml = os.path.join(intermediate_directory, filename)
+    for filename in os.listdir(temp_dir):
+        if filename.endswith(".xml"):
+            inputXml = os.path.join(temp_dir, filename)
             parse(inputXml)
             os.remove(inputXml)
+    # os.removedirs(temp_dir)
 
-def parse(inputXml: str):   
+
+def parse(inputXml: str):
     preParseXML(inputXml)
     tree = ET.parse(inputXml)  # improvement: change to argument based input
     root = tree.getroot()
@@ -187,13 +191,14 @@ def parse(inputXml: str):
 
 if __name__ == "__main__":
     argv = sys.argv[1:]
-    inputfile = ''
-    outputfile = ''
-    opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+    inputfile = ""
+    opts, args = getopt.getopt(argv, "hi:")
     for opt, arg in opts:
-        if opt == '-h':
-                print ('test.py -i <inputfile> \nResult will be saved as a .json in ./result/...')
-                sys.exit()
-        elif opt in ("-i", "--ifile"):
+        if opt == "-h":
+            print("[Usage]: xmlParser.py -i <inputPDF>")
+            print("Result will be saved as a .json in ./result/")
+            sys.exit()
+        # elif opt == "-i":
+        else:
             inputfile = arg
-    main(inputfile)
+            main(inputfile)
