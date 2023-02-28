@@ -1,16 +1,22 @@
 # ReactIE-PDF-Conversion
-This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. See [copper_acetate.json](/copper_acetate.json) as an example.
+This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. See [copper_acetate.json](/Thrust1CheckpointJSON/Copper_Acetate.json) as an example.
 
 ## Dependency
-This project depends on [zanibbi/SymbolScraper](https://github.com/zanibbi/SymbolScraper). Once compiled successfully, an executable called sscraper will be generated.
+This project depends on [zanibbi/SymbolScraper](https://github.com/zanibbi/SymbolScraper), which is packaged as a submodule.
+
+To initialize submodule, first run `git submodule update --init` inside SymbolScraper directory. Then, run `make` to build the package.
+
+Once compiled successfully, an executable will be generated at SymbolScraper/bin/sscraper.
 
 ## Usage
-First, generate xml file from zanibbi/SymbolScraper. In project directory run `./path_to_sscraper ./path_to_pdf ./`.
+There are two ways of running this PDF converter. 
 
-Then, change the xmlPath variable in xmlParser.py to your generated xml file. 
+The first way is simply runnig `python3 xmlParser.py`. This will parse all the PDFs inside [Thrust1CheckpointPDF](/Thrust1CheckpointPDF) directory. 
 
-Lastly, in terminal run `python xmlParser.py -i /path/to/pdf`. If successful, a sample.json file with all the text information will be generated.
+The second way is running `python3 xmlParser.py -i /path/to/pdf`. This only parses the PDF specified. 
+
+If successful, a .json file with all the text information will be generated at [result](/result) directory.
 
 ## Issues
-- Currently designed to work well with The Journal of Organic Chemistry
+- Currently designed to work well with most modern conference papers, but not all format of conference papers are supported.  
 
