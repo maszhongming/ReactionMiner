@@ -124,22 +124,21 @@ def checkEndOfPage(text):
 
 def parseFile(inputfile: str):
     temp_dir = "./xmlFiles"
+    input_dir = os.path.dirname(inputfile)
     if not os.path.exists(temp_dir):
         os.mkdir(temp_dir)
-    print("sscraper " + inputfile + " " + temp_dir)
+    print("Parsing", inputfile)
     os.system(
-        # "SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + " > /dev/null"
         "SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + " > /dev/null"
     )
-    # for inputXml in xmlPaths:
     for filename in os.listdir(temp_dir):
         if filename.endswith(".xml"):
             inputXml = os.path.join(temp_dir, filename)
             parse(inputXml)
             os.remove(inputXml)
-    for mdFile in os.listdir(os.getcwd()):
+    for mdFile in os.listdir(input_dir):
         if mdFile.endswith(".md") and mdFile != "README.md":
-            os.remove(mdFile)
+            os.remove(input_dir + "/" + mdFile)
     os.removedirs(temp_dir)
 
 
