@@ -118,13 +118,13 @@ def main(inputfile: str):
     if not os.path.exists(temp_dir):
         os.mkdir(temp_dir)
     print("sscraper " + inputfile + " " + temp_dir)
-    os.system("SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + ' > /dev/null') 
+    os.system("SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + ' >> /dev/null') 
     # for inputXml in xmlPaths:
     for filename in os.listdir(temp_dir):
         if filename.endswith(".xml"):
             inputXml = os.path.join(temp_dir, filename)
             parse(inputXml)
-            os.remove(inputXml)
+            # os.remove(inputXml)
     # os.removedirs(temp_dir)
 
 
