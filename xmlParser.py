@@ -113,18 +113,29 @@ def checkStartParagrph(lineXml, paragraphStart):
     return location - 9 in paragraphStart or location - 10 in paragraphStart
 
 
+def checkEndOfPage(lineXml, prevLocation):
+    location = lineXml.attrib["BBOX"].split(" ").float()
+    if location[0] < prevLocation[0] and location[1] < prevLocation:
+        return True
+
+
 def main(inputfile: str):
     temp_dir = "./xmlFiles"
     if not os.path.exists(temp_dir):
         os.mkdir(temp_dir)
     print("sscraper " + inputfile + " " + temp_dir)
-    os.system("SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + ' >> /dev/null') 
+    os.system(
+        "SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + " > /dev/null"
+    )
     # for inputXml in xmlPaths:
     for filename in os.listdir(temp_dir):
         if filename.endswith(".xml"):
             inputXml = os.path.join(temp_dir, filename)
             parse(inputXml)
             # os.remove(inputXml)
+    for mdFile in os.listdir(os.getcwd()):
+        if mdFile.endswith(".md") and mdFile != "README.md":
+            os.remove(mdFile)
     # os.removedirs(temp_dir)
 
 
