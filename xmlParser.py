@@ -3,6 +3,7 @@ import collections
 import json
 import os
 import sys, getopt
+import re
 
 weirdChar = {
     "\u2212": "-",  # long dash
@@ -113,11 +114,12 @@ def checkStartParagrph(lineXml, paragraphStart):
     return location - 9 in paragraphStart or location - 10 in paragraphStart
 
 
-def checkEndOfPage(lineXml, prevLocation):
-    location = lineXml.attrib["BBOX"].split(" ").float()
-    if location[0] < prevLocation[0] and location[1] < prevLocation:
+def checkEndOfPage(text):
+    # print(text)
+    if re.match('^(scheme|table|figure) [1-9]. ', text):
         return True
-
+    else:
+        return False
 
 def main(inputfile: str):
     temp_dir = "./xmlFiles"
@@ -132,11 +134,11 @@ def main(inputfile: str):
         if filename.endswith(".xml"):
             inputXml = os.path.join(temp_dir, filename)
             parse(inputXml)
-            # os.remove(inputXml)
+            os.remove(inputXml)
     for mdFile in os.listdir(os.getcwd()):
         if mdFile.endswith(".md") and mdFile != "README.md":
             os.remove(mdFile)
-    # os.removedirs(temp_dir)
+    os.removedirs(temp_dir)
 
 
 def parse(inputXml: str):
@@ -155,47 +157,51 @@ def parse(inputXml: str):
 
     # parsing logic: check the black square, flag=1 when square is encountered
     # use the next line as new section title
-    for lineXml in root.iter("Line"):
-
-        if checkSideLine(lineXml):
-            continue
-        if checkStartSection(lineXml):
-            newSectionFlag = True
-            continue
-        if (
-            checkStartParagrph(lineXml, paragraphStart)
-            and currSection not in singleParagraphSection
-            and output[currSection][-1]
-        ):
-            output[currSection][-1] = output[currSection][-1].strip()
-            output[currSection].append("")
-        line = ""
-        for wordXml in lineXml.iter("Word"):
-            word = buildWord(wordXml)
-            line = updateText(line, word)
-        line = line.strip()
-        if checkIgnoredPrefix(line):
-            continue
-
-        # update outputs
-        output["fullText"] = updateText(output["fullText"], line)
-        # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
-        # either write to a new section title or an existing section's content
-        if newSectionFlag:
-            if currSection in singleParagraphSection:
-                output[currSection] = output[currSection].strip()
-            else:
+    for pageXml in root.iter("Page"):
+        for lineXml in pageXml.iter("Line"):
+            if checkSideLine(lineXml):
+                continue
+            if checkStartSection(lineXml):
+                newSectionFlag = True
+                continue
+            if (
+                checkStartParagrph(lineXml, paragraphStart)
+                and currSection not in singleParagraphSection
+                and output[currSection][-1]
+            ):
                 output[currSection][-1] = output[currSection][-1].strip()
-            currSection = line.lower()
-            output[currSection] = []
-            output[currSection].append("")
-            newSectionFlag = False
-        elif line.lower().startswith("abstract:"):
-            output["title & info"] = output[currSection].strip()
-            currSection = "abstract"
-            output["abstract"] += line[len("abstract:") :].strip()
-        else:
-            output[currSection] = updateText(output[currSection], line)
+                output[currSection].append("")
+            line = ""
+            for wordXml in lineXml.iter("Word"):
+                word = buildWord(wordXml)
+                line = updateText(line, word)
+            line = line.strip()
+            if checkIgnoredPrefix(line):
+                continue
+
+            # update outputs
+            output["fullText"] = updateText(output["fullText"], line)
+            # blue square is always by itself on a line, so sectionTitleBuf is fully populated here
+            # either write to a new section title or an existing section's content
+            if newSectionFlag:
+                if currSection in singleParagraphSection:
+                    output[currSection] = output[currSection].strip()
+                else:
+                    output[currSection][-1] = output[currSection][-1].strip()
+                currSection = line.lower()
+                output[currSection] = []
+                output[currSection].append("")
+                newSectionFlag = False
+            elif line.lower().startswith("abstract:"):
+                # print(output)
+                output["title & info"] = output["title & info"].strip()
+                currSection = "abstract"
+                output["abstract"] += line[len("abstract:") :].strip()
+            elif checkEndOfPage(line.lower()):
+                print('here')
+                break
+            else:
+                output[currSection] = updateText(output[currSection], line)
 
     outputJsonFile(inputXml, output)
 
@@ -206,7 +212,7 @@ if __name__ == "__main__":
     opts, args = getopt.getopt(argv, "hi:")
     for opt, arg in opts:
         if opt == "-h":
-            print("[Usage]: xmlParser.py -i <inputPDF>")
+            print("[Usage]: python3 xmlParser.py -i <inputPDF>")
             print("Result will be saved as a .json in ./result/")
             sys.exit()
         # elif opt == "-i":
