@@ -3,3 +3,4 @@ sscraper
 line.txt
 SymbolScraper/
 not_used/
+__pycache__/
