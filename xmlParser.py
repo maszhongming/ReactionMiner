@@ -4,6 +4,9 @@ import json
 import os
 import sys, getopt
 import re
+import shutil
+
+defaultDir = "bio_paper"
 
 weirdChar = {
     "\u2212": "-",  # long dash
@@ -45,6 +48,13 @@ def preParseXML(path):
     filedata = filedata.replace(">&<", ">&amp;<")
     filedata = filedata.replace("><<", ">&lt;<")
     filedata = filedata.replace(">><", ">&gt;<")
+    filedata = filedata.replace("", "")
+    filedata = filedata.replace(chr(0), "")
+    for invalidAscii in range(1, 31):
+        if invalidAscii == 9 or invalidAscii == 10 or invalidAscii == 13:
+            continue   # tab, newline, carriage return 
+        char = chr(invalidAscii)
+        filedata = filedata.replace(char, "")
     with open(path, "w") as file:
         file.write(filedata)
 
@@ -121,26 +131,51 @@ def checkEndOfPage(text):
     else:
         return False
 
+def validateFilename(inputfile: str):
+    newFilename = inputfile.replace(" ", "_").replace("(", "_").replace(")", "_")
+    os.rename(inputfile, newFilename)
+    return newFilename
 
-def parseFile(inputfile: str):
-    temp_dir = "./xmlFiles"
-    input_dir = os.path.dirname(inputfile)
-    if not os.path.exists(temp_dir):
-        os.mkdir(temp_dir)
-    print("Parsing", inputfile)
-    os.system(
-        "SymbolScraper/bin/sscraper " + inputfile + " " + temp_dir + " > /dev/null"
-    )
-    for filename in os.listdir(temp_dir):
-        if filename.endswith(".xml"):
-            inputXml = os.path.join(temp_dir, filename)
-            parse(inputXml)
-            os.remove(inputXml)
-    for mdFile in os.listdir(input_dir):
+
+def parseFile(pdfPath: str):
+    # create temp dir if not exist
+    tempDirPath = "./xmlFiles/"
+    if not os.path.exists(tempDirPath):
+        os.mkdir(tempDirPath)
+    # don't run SymbolScraper if xml already parsed
+    xmlPath = tempDirPath + pdfPath.split("/")[-1][:-4] + ".xml"
+    if os.path.exists(xmlPath):
+        print("XML file already exists")
+        print("xmlpath", xmlPath)
+    else:
+        print("Parsing", pdfPath)
+        os.system(
+            "SymbolScraper/bin/sscraper " + pdfPath + " " + tempDirPath + " > /dev/null"
+        )
+    # don't parse xml if json already exists
+    targetJsonPath = os.getcwd() + "/result/" + pdfPath.split("/")[-1][:-4] + ".json"
+    if os.path.exists(targetJsonPath):
+        print("JSON file already exists")
+        return
+    else:    
+        parse(xmlPath)
+    # clean up useless .md files created by SymbolScraper
+    pdfDirPath = os.path.dirname(pdfPath)
+    for mdFile in os.listdir(pdfDirPath):
         if mdFile.endswith(".md") and mdFile != "README.md":
-            os.remove(input_dir + "/" + mdFile)
-    os.removedirs(temp_dir)
+            os.remove(pdfDirPath + "/" + mdFile)
 
+# parse all files in a folder
+def parseFolder(folderPath: str):
+    for item in sorted(os.listdir(folderPath)):
+        itemPath = os.path.join(folderPath, item)
+        if itemPath.endswith(".pdf"):
+            validPath = validateFilename(itemPath)
+            parseFile(validPath)
+        elif os.path.isdir(itemPath):
+            validPath = validateFilename(itemPath)
+            parseFolder(validPath)
+        print()
 
 def parse(inputXml: str):
     preParseXML(inputXml)
@@ -205,6 +240,15 @@ def parse(inputXml: str):
 
     outputJsonFile(inputXml, output)
 
+# clear everything in the xml and result folder
+def cleanFolders():
+    path = os.getcwd()
+    xml_directory = path + "/xmlFiles/"
+    result_directory = path + "/result/"
+    if os.path.exists(xml_directory):
+        shutil.rmtree(xml_directory)
+    if os.path.exists(result_directory):
+        shutil.rmtree(result_directory)
 
 if __name__ == "__main__":
     argv = sys.argv[1:]
@@ -219,8 +263,7 @@ if __name__ == "__main__":
             inputfile = arg
             parseFile(inputfile)
     if not opts:
-        target_dir = os.path.join(os.getcwd(), "Thrust1CheckpointPDF")
-        for filename in os.listdir(target_dir):
-            if filename.endswith(".pdf"):
-                inputPDF = os.path.join(target_dir, filename)
-                parseFile(inputPDF)
+        # cleanFolders()
+        cwd = os.getcwd()
+        target_dir = os.path.join(cwd, defaultDir)
+        parseFolder(target_dir)

@@ -1,8 +1,5 @@
 *.md
 sscraper
 line.txt
-xmlFiles/
-result/
 SymbolScraper/
-bio_paper/
 not_used/

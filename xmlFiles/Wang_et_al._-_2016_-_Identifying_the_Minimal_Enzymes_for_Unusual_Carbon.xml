@@ -1,0 +1,650 @@
+<Document>
+<runtime>403</runtime>
+<pagemetrics>
+	<page>
+		<pagewidth>595.276</pagewidth>
+		<pageheight>841.89</pageheight>
+		<no>0</no>
+		<lines>12</lines>
+		<words>85</words>
+		<characters>435</characters>
+	</page>
+</pagemetrics>
+<Page id="0">
+	<Line id="0" BBOX="46.77 766.26 154.57407 766.26">
+		<Word id="0">
+			<Char id="0" mergeId="0" BBOX="47.3279 766.1006 8.400379 11.062359" RGB = "[1.0]">C</Char>
+			<Char id="1" mergeId="0" BBOX="56.78032 766.1006 10.169719 11.078299" RGB = "[1.0]">O</Char>
+			<Char id="2" mergeId="0" BBOX="68.6078 766.26 7.7468395 10.823259" RGB = "[1.0]">R</Char>
+			<Char id="3" mergeId="0" BBOX="77.72549 766.26 7.7468395 10.823259" RGB = "[1.0]">R</Char>
+			<Char id="4" mergeId="0" BBOX="86.84317 766.26 2.0881398 10.743559" RGB = "[1.0]">I</Char>
+			<Char id="5" mergeId="0" BBOX="90.60501 766.16437 9.261139 10.950779" RGB = "[1.0]">G</Char>
+			<Char id="6" mergeId="0" BBOX="101.763016 766.26 6.5832195 10.743559" RGB = "[1.0]">E</Char>
+			<Char id="7" mergeId="0" BBOX="110.05181 766.26 8.623539 10.743559" RGB = "[1.0]">N</Char>
+			<Char id="8" mergeId="0" BBOX="120.84319 766.16437 9.27708 10.9189" RGB = "[1.0]">D</Char>
+			<Char id="9" mergeId="0" BBOX="131.77986 766.1006 8.48008 10.902959" RGB = "[1.0]">U</Char>
+			<Char id="10" mergeId="0" BBOX="142.14087 766.26 11.5564995 10.743559" RGB = "[1.0]">M</Char>
+		</Word>
+		<Word id="1">
+			<Char id="435" mergeId="0" BBOX="42.52 757.871 510.236 3.5717163" RGB="unknown">fraction(-)</Char>
+		</Word>
+	</Line>
+	<Line id="1" BBOX="46.77 739.96 374.74747 739.96">
+		<Word id="1">
+			<Char id="11" mergeId="0" BBOX="46.77 739.96 4.5118804 6.10644" RGB = "[1.0]">T</Char>
+			<Char id="12" mergeId="0" BBOX="51.96138 739.96 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="13" mergeId="0" BBOX="56.6454 739.8785 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="2">
+			<Char id="14" mergeId="0" BBOX="63.903343 739.86945 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+			<Char id="15" mergeId="0" BBOX="67.29178 739.86945 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+			<Char id="16" mergeId="0" BBOX="70.48996 739.8785 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="17" mergeId="0" BBOX="75.30988 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="18" mergeId="0" BBOX="77.93728 739.8785 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="19" mergeId="0" BBOX="82.46728 739.86945 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="20" mergeId="0" BBOX="87.4684 739.86945 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="21" mergeId="0" BBOX="91.61428 739.86945 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="22" mergeId="0" BBOX="96.89626 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="23" mergeId="0" BBOX="101.399086 739.96 2.8720202 6.5322604" RGB = "[1.0]">f</Char>
+			<Char id="24" mergeId="0" BBOX="104.45231 739.96 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="25" mergeId="0" BBOX="106.32772 738.07556 4.09512 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="26" mergeId="0" BBOX="111.709366 739.86945 3.7327201 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="27" mergeId="0" BBOX="116.71049 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="28" mergeId="0" BBOX="119.31071 739.86945 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="29" mergeId="0" BBOX="123.49642 739.86945 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+			<Char id="30" mergeId="0" BBOX="126.89393 739.96 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="31" mergeId="0" BBOX="128.76935 739.86945 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="32" mergeId="0" BBOX="134.07515 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="33" mergeId="0" BBOX="138.91446 739.86945 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="3">
+			<Char id="34" mergeId="0" BBOX="145.2043 739.86945 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="35" mergeId="0" BBOX="149.98798 739.96 2.8720202 6.5322604" RGB = "[1.0]">f</Char>
+		</Word>
+		<Word id="4">
+			<Char id="36" mergeId="0" BBOX="155.23001 739.96 4.5118804 6.10644" RGB = "[1.0]">T</Char>
+			<Char id="37" mergeId="0" BBOX="160.11421 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="38" mergeId="0" BBOX="163.02515 738.17523 4.18572 6.2695203" RGB = "[1.0]">p</Char>
+		</Word>
+		<Word id="5">
+			<Char id="39" mergeId="0" BBOX="170.62943 739.86945 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="40" mergeId="0" BBOX="175.27515 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="41" mergeId="0" BBOX="179.9954 739.86945 4.14042 6.5232005" RGB = "[1.0]">d</Char>
+		</Word>
+		<Word id="6">
+			<Char id="42" mergeId="0" BBOX="187.79805 739.86945 4.04076 6.0702004" RGB = "[1.0]">6</Char>
+			<Char id="43" mergeId="0" BBOX="192.38242 742.1163 2.2378201 0.5889" RGB = "[1.0]">-</Char>
+			<Char id="44" mergeId="0" BBOX="195.17288 739.86945 4.63872 6.28764" RGB = "[1.0]">C</Char>
+			<Char id="45" mergeId="0" BBOX="200.79008 739.96 0.79728 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="46" mergeId="0" BBOX="202.47525 742.1163 2.2378201 0.5889" RGB = "[1.0]">-</Char>
+			<Char id="47" mergeId="0" BBOX="204.93956 739.96 4.5118804 6.10644" RGB = "[1.0]">T</Char>
+			<Char id="48" mergeId="0" BBOX="209.89421 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="49" mergeId="0" BBOX="212.80246 738.17523 4.18572 6.2695203" RGB = "[1.0]">p</Char>
+		</Word>
+		<Word id="7">
+			<Char id="50" mergeId="0" BBOX="220.6336 739.96 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="51" mergeId="0" BBOX="222.78989 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+		</Word>
+		<Word id="8">
+			<Char id="52" mergeId="0" BBOX="230.58856 739.96 3.2887802 6.10644" RGB = "[1.0]">F</Char>
+			<Char id="53" mergeId="0" BBOX="234.87395 739.96 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="54" mergeId="0" BBOX="236.74937 738.07556 4.09512 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="55" mergeId="0" BBOX="242.13101 739.86945 3.7327201 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="56" mergeId="0" BBOX="247.13213 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="57" mergeId="0" BBOX="249.75952 739.8785 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="58" mergeId="0" BBOX="254.29857 739.86945 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="9">
+			<Char id="59" mergeId="0" BBOX="261.28223 739.96 1.9660201 5.8890004" RGB = "[1.0]">1</Char>
+		</Word>
+		<Word id="10">
+			<Char id="60" mergeId="0" BBOX="267.9677 739.86945 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="61" mergeId="0" BBOX="272.62515 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="62" mergeId="0" BBOX="277.3454 739.86945 4.14042 6.5232005" RGB = "[1.0]">d</Char>
+		</Word>
+		<Word id="11">
+			<Char id="63" mergeId="0" BBOX="285.22052 739.86945 3.6783602 6.0792603" RGB = "[1.0]">3</Char>
+		</Word>
+		<Word id="12">
+			<Char id="64" mergeId="0" BBOX="292.5277 739.86945 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="65" mergeId="0" BBOX="297.18417 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="66" mergeId="0" BBOX="299.81158 739.8785 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="13">
+			<Char id="67" mergeId="0" BBOX="307.2636 739.96 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="68" mergeId="0" BBOX="309.4199 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="69" mergeId="0" BBOX="314.20428 739.86945 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="70" mergeId="0" BBOX="318.25412 739.86945 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="71" mergeId="0" BBOX="323.54517 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="72" mergeId="0" BBOX="326.4625 739.96 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="73" mergeId="0" BBOX="329.0899 739.8785 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="74" mergeId="0" BBOX="333.6199 739.86945 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="75" mergeId="0" BBOX="337.5031 739.86945 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+			<Char id="76" mergeId="0" BBOX="341.01837 739.96 0.79728 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="77" mergeId="0" BBOX="342.51328 737.9668 4.1223 6.37824" RGB = "[1.0]">y</Char>
+		</Word>
+		<Word id="14">
+			<Char id="78" mergeId="0" BBOX="349.82336 739.86945 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+			<Char id="79" mergeId="0" BBOX="353.7101 739.96 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="80" mergeId="0" BBOX="358.39413 739.86945 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="81" mergeId="0" BBOX="363.21408 739.96 6.36918 4.3850403" RGB = "[1.0]">w</Char>
+			<Char id="82" mergeId="0" BBOX="370.3715 739.96 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+		</Word>
+	</Line>
+	<Line id="2" BBOX="46.77 727.94 371.87448 727.94">
+		<Word id="15">
+			<Char id="83" mergeId="0" BBOX="47.0871 727.8494 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="84" mergeId="0" BBOX="51.46308 727.8494 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="16">
+			<Char id="85" mergeId="0" BBOX="57.71086 727.94 4.3941 6.14268" RGB = "[1.0]">R</Char>
+		</Word>
+		<Word id="17">
+			<Char id="86" mergeId="0" BBOX="63.08402 726.83466 1.4586601 5.3363404" RGB = "[1.0]">;</Char>
+		</Word>
+		<Word id="18">
+			<Char id="87" mergeId="0" BBOX="67.68756 727.8494 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+			<Char id="88" mergeId="0" BBOX="71.20138 727.94 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="89" mergeId="0" BBOX="75.8854 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="90" mergeId="0" BBOX="80.152664 725.9468 4.1223 6.37824" RGB = "[1.0]">y</Char>
+		</Word>
+		<Word id="19">
+			<Char id="91" mergeId="0" BBOX="87.43334 727.8494 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+			<Char id="92" mergeId="0" BBOX="91.320076 727.94 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="93" mergeId="0" BBOX="96.0041 727.8494 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="94" mergeId="0" BBOX="101.29514 727.8494 3.7327201 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="95" mergeId="0" BBOX="106.32344 727.94 0.79728 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="96" mergeId="0" BBOX="108.08108 727.8494 4.14042 6.5232005" RGB = "[1.0]">d</Char>
+		</Word>
+		<Word id="20">
+			<Char id="97" mergeId="0" BBOX="116.22514 727.8494 4.1947803 6.5232005" RGB = "[1.0]">b</Char>
+			<Char id="98" mergeId="0" BBOX="121.1266 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="21">
+			<Char id="99" mergeId="0" BBOX="128.17873 727.8494 4.09512 6.28764" RGB = "[1.0]">S</Char>
+			<Char id="100" mergeId="0" BBOX="132.79112 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="22">
+			<Char id="101" mergeId="0" BBOX="136.91449 727.94 4.5118804 6.10644" RGB = "[1.0]">T</Char>
+			<Char id="102" mergeId="0" BBOX="142.10138 727.94 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="103" mergeId="0" BBOX="146.98471 727.94 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="104" mergeId="0" BBOX="148.86919 727.8494 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="23">
+			<Char id="105" mergeId="0" BBOX="155.17429 727.8494 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="106" mergeId="0" BBOX="159.5412 727.94 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="107" mergeId="0" BBOX="164.19803 727.8494 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="108" mergeId="0" BBOX="168.84581 727.94 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="109" mergeId="0" BBOX="173.56607 726.05554 4.09512 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="110" mergeId="0" BBOX="178.75429 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="24">
+			<Char id="111" mergeId="0" BBOX="185.95428 727.8494 4.14042 6.5232005" RGB = "[1.0]">d</Char>
+			<Char id="112" mergeId="0" BBOX="191.11429 727.8494 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="113" mergeId="0" BBOX="196.1154 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="114" mergeId="0" BBOX="200.65445 727.8494 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="25">
+			<Char id="115" mergeId="0" BBOX="207.21513 727.94 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="116" mergeId="0" BBOX="211.9354 727.8494 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="117" mergeId="0" BBOX="216.75531 727.8494 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+		</Word>
+		<Word id="26">
+			<Char id="118" mergeId="0" BBOX="222.89359 727.94 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="119" mergeId="0" BBOX="225.04987 727.94 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="120" mergeId="0" BBOX="229.55269 727.94 2.8720202 6.5322604" RGB = "[1.0]">f</Char>
+			<Char id="121" mergeId="0" BBOX="232.72368 727.94 0.79728 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="122" mergeId="0" BBOX="234.77124 727.8494 3.7327201 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="123" mergeId="0" BBOX="239.48244 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="124" mergeId="0" BBOX="244.30513 727.94 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="125" mergeId="0" BBOX="249.02539 727.8494 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="126" mergeId="0" BBOX="253.07521 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="27">
+			<Char id="127" mergeId="0" BBOX="260.22308 727.8494 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+			<Char id="128" mergeId="0" BBOX="263.73834 727.94 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="129" mergeId="0" BBOX="268.42236 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="28">
+			<Char id="130" mergeId="0" BBOX="275.70425 727.8494 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="131" mergeId="0" BBOX="279.75406 727.8494 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="132" mergeId="0" BBOX="285.03607 727.94 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="133" mergeId="0" BBOX="289.75632 727.8494 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="134" mergeId="0" BBOX="294.12323 727.94 0.79728 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="135" mergeId="0" BBOX="296.17078 727.8494 3.7327201 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="136" mergeId="0" BBOX="300.89105 727.8494 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+			<Char id="137" mergeId="0" BBOX="304.66003 727.94 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="138" mergeId="0" BBOX="306.53543 727.8494 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="139" mergeId="0" BBOX="311.81744 727.94 3.7689602 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="140" mergeId="0" BBOX="316.54675 727.8494 2.8720202 4.5753" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="29">
+			<Char id="141" mergeId="0" BBOX="322.93427 727.8494 4.2853804 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="142" mergeId="0" BBOX="327.71796 727.94 2.8720202 6.5322604" RGB = "[1.0]">f</Char>
+		</Word>
+		<Word id="30">
+			<Char id="143" mergeId="0" BBOX="333.1331 727.8494 2.6002202 5.5266004" RGB = "[1.0]">t</Char>
+			<Char id="144" mergeId="0" BBOX="336.64835 727.94 3.7327201 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="145" mergeId="0" BBOX="341.33237 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="31">
+			<Char id="146" mergeId="0" BBOX="348.90515 726.1552 4.18572 6.2695203" RGB = "[1.0]">p</Char>
+			<Char id="147" mergeId="0" BBOX="353.77942 727.8494 3.4971602 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="148" mergeId="0" BBOX="358.42722 726.1552 4.18572 6.2695203" RGB = "[1.0]">p</Char>
+			<Char id="149" mergeId="0" BBOX="363.32864 727.85846 3.8686202 4.5662403" RGB = "[1.0]">e</Char>
+			<Char id="150" mergeId="0" BBOX="368.14856 727.94 2.20158 4.4847" RGB = "[1.0]">r</Char>
+			<Char id="151" mergeId="0" BBOX="370.46112 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+	</Line>
+	<Line id="3" BBOX="392.6 739.96 543.9815 739.96">
+		<Word id="32">
+			<Char id="152" mergeId="0" BBOX="393.36105 739.96 4.5209403 6.10644" RGB = "[1.0]">Y</Char>
+			<Char id="153" mergeId="0" BBOX="396.76144 739.86945 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="33">
+			<Char id="154" mergeId="0" BBOX="402.3788 739.96 7.2208204 6.10644" RGB = "[1.0]">W</Char>
+			<Char id="155" mergeId="0" BBOX="409.2169 739.86945 4.2038403 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="156" mergeId="0" BBOX="413.8937 739.96 4.1132402 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="157" mergeId="0" BBOX="418.5324 738.07556 4.40316 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="158" mergeId="0" BBOX="422.78156 738.8547 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="34">
+			<Char id="159" mergeId="0" BBOX="427.52823 739.86945 3.7055402 6.19704" RGB = "[1.0]">J</Char>
+			<Char id="160" mergeId="0" BBOX="431.28812 739.86945 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="35">
+			<Char id="161" mergeId="0" BBOX="436.90884 739.96 7.2208204 6.10644" RGB = "[1.0]">W</Char>
+			<Char id="162" mergeId="0" BBOX="443.8669 739.86945 4.2038403 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="163" mergeId="0" BBOX="448.5419 739.96 4.1132402 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="164" mergeId="0" BBOX="453.1806 738.07556 4.40316 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="165" mergeId="0" BBOX="457.42975 738.8547 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="36">
+			<Char id="166" mergeId="0" BBOX="462.49875 739.86945 4.09512 6.28764" RGB = "[1.0]">S</Char>
+			<Char id="167" mergeId="0" BBOX="466.82034 739.86945 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="37">
+			<Char id="168" mergeId="0" BBOX="472.33105 739.96 4.5209403 6.10644" RGB = "[1.0]">Y</Char>
+			<Char id="169" mergeId="0" BBOX="476.45328 739.86945 4.06794 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="170" mergeId="0" BBOX="480.3295 738.8547 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="38">
+			<Char id="171" mergeId="0" BBOX="485.63535 739.96 4.2582 6.10644" RGB = "[1.0]">F</Char>
+			<Char id="172" mergeId="0" BBOX="488.66028 739.86945 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="39">
+			<Char id="173" mergeId="0" BBOX="494.28333 739.96 7.2208204 6.10644" RGB = "[1.0]">W</Char>
+			<Char id="174" mergeId="0" BBOX="501.11993 739.86945 4.2038403 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="175" mergeId="0" BBOX="505.79492 739.96 4.1132402 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="176" mergeId="0" BBOX="510.43362 738.07556 4.40316 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="177" mergeId="0" BBOX="514.6828 738.8547 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="40">
+			<Char id="178" mergeId="0" BBOX="519.9909 739.96 5.4813004 6.10644" RGB = "[1.0]">H</Char>
+			<Char id="179" mergeId="0" BBOX="525.56274 739.86945 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="41">
+			<Char id="180" mergeId="0" BBOX="530.4278 739.96 6.78594 6.10644" RGB = "[1.0]">M</Char>
+			<Char id="181" mergeId="0" BBOX="537.6758 739.86945 4.2038403 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="182" mergeId="0" BBOX="541.71655 738.8547 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+	</Line>
+	<Line id="4" BBOX="392.6 727.94 547.55023 727.94">
+		<Word id="42">
+			<Char id="183" mergeId="0" BBOX="393.04395 727.8494 4.9286404 6.28764" RGB = "[1.0]">C</Char>
+			<Char id="184" mergeId="0" BBOX="397.79138 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="43">
+			<Char id="185" mergeId="0" BBOX="403.28107 727.94 4.5209403 6.10644" RGB = "[1.0]">Y</Char>
+			<Char id="186" mergeId="0" BBOX="407.4033 727.8494 4.06794 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="187" mergeId="0" BBOX="411.949 727.8494 3.6783602 4.5753" RGB = "[1.0]">e</Char>
+			<Char id="188" mergeId="0" BBOX="415.3193 726.83466 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="44">
+			<Char id="189" mergeId="0" BBOX="420.4978 727.94 6.78594 6.10644" RGB = "[1.0]">M</Char>
+			<Char id="190" mergeId="0" BBOX="427.64615 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="45">
+			<Char id="191" mergeId="0" BBOX="432.62088 727.94 3.3340802 6.10644" RGB = "[1.0]">L</Char>
+			<Char id="192" mergeId="0" BBOX="436.55295 727.94 1.9569601 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="193" mergeId="0" BBOX="438.83606 727.8494 4.06794 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="194" mergeId="0" BBOX="442.70468 726.83466 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="46">
+			<Char id="195" mergeId="0" BBOX="447.5879 727.94 5.3544602 6.10644" RGB = "[1.0]">Z</Char>
+			<Char id="196" mergeId="0" BBOX="452.6615 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="47">
+			<Char id="197" mergeId="0" BBOX="457.68997 727.90375 5.4813004 6.1789203" RGB = "[1.0]">D</Char>
+			<Char id="198" mergeId="0" BBOX="463.54272 727.8494 3.6783602 4.5753" RGB = "[1.0]">e</Char>
+			<Char id="199" mergeId="0" BBOX="467.54727 727.94 4.1132402 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="200" mergeId="0" BBOX="472.18597 726.05554 4.40316 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="201" mergeId="0" BBOX="476.43512 726.83466 1.77576 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="48">
+			<Char id="202" mergeId="0" BBOX="482.2611 727.94 4.5209403 6.10644" RGB = "[1.0]">Y</Char>
+			<Char id="203" mergeId="0" BBOX="485.6615 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="49">
+			<Char id="204" mergeId="0" BBOX="490.6209 727.94 5.4813004 6.10644" RGB = "[1.0]">H</Char>
+			<Char id="205" mergeId="0" BBOX="496.46463 727.8494 4.06794 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="206" mergeId="0" BBOX="501.0037 727.8494 4.2038403 4.5753" RGB = "[1.0]">a</Char>
+			<Char id="207" mergeId="0" BBOX="505.67868 727.94 4.1132402 4.4847" RGB = "[1.0]">n</Char>
+			<Char id="208" mergeId="0" BBOX="510.31738 726.05554 4.40316 6.36918" RGB = "[1.0]">g</Char>
+			<Char id="209" mergeId="0" BBOX="514.5665 726.83466 1.77576 2.24688" RGB = "[1.0]">,</Char>
+			<Char id="210" mergeId="0" BBOX="517.60956 730.9751 3.2887802 3.1710002" RGB = "[1.0]">*</Char>
+		</Word>
+		<Word id="50">
+			<Char id="211" mergeId="0" BBOX="523.1263 727.94 5.6172004 6.10644" RGB = "[1.0]">X</Char>
+			<Char id="212" mergeId="0" BBOX="528.3003 727.8494 1.07814 1.1325" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="51">
+			<Char id="213" mergeId="0" BBOX="533.4694 727.0974 5.5175405 7.0486803" RGB = "[1.0]">Q</Char>
+			<Char id="214" mergeId="0" BBOX="539.5321 727.8494 4.06794 4.4756403" RGB = "[1.0]">u</Char>
+			<Char id="215" mergeId="0" BBOX="544.46075 730.9751 3.2887802 3.1710002" RGB = "[1.0]">*</Char>
+		</Word>
+	</Line>
+	<Line id="5" BBOX="392.6 712.91 538.7869 712.91">
+		<Word id="52">
+			<Char id="216" mergeId="0" BBOX="393.22516 712.91 1.1868601 6.10644" RGB = "[1.0]">I</Char>
+			<Char id="217" mergeId="0" BBOX="395.35425 712.8194 4.4394 6.5232005" RGB = "[1.0]">d</Char>
+			<Char id="218" mergeId="0" BBOX="400.6453 712.8284 4.09512 4.6024804" RGB = "[1.0]">e</Char>
+			<Char id="219" mergeId="0" BBOX="405.59207 712.91 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="220" mergeId="0" BBOX="410.37573 712.8194 2.81766 5.6625004" RGB = "[1.0]">t</Char>
+			<Char id="221" mergeId="0" BBOX="413.91818 712.91 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="222" mergeId="0" BBOX="415.91138 712.91 3.02604 6.5322604" RGB = "[1.0]">f</Char>
+			<Char id="223" mergeId="0" BBOX="418.7653 710.91675 4.4756403 6.41448" RGB = "[1.0]">y</Char>
+			<Char id="224" mergeId="0" BBOX="423.92923 712.91 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="225" mergeId="0" BBOX="426.34827 712.91 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="226" mergeId="0" BBOX="431.295 711.0255 4.35786 6.4054203" RGB = "[1.0]">g</Char>
+		</Word>
+		<Word id="53">
+			<Char id="227" mergeId="0" BBOX="439.07404 712.8194 2.81766 5.6625004" RGB = "[1.0]">t</Char>
+			<Char id="228" mergeId="0" BBOX="442.71616 712.91 4.0498204 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="229" mergeId="0" BBOX="447.62668 712.8284 4.09512 4.6024804" RGB = "[1.0]">e</Char>
+		</Word>
+		<Word id="54">
+			<Char id="230" mergeId="0" BBOX="455.2202 712.91 6.5685005 6.10644" RGB = "[1.0]">M</Char>
+			<Char id="231" mergeId="0" BBOX="462.7762 712.91 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="232" mergeId="0" BBOX="465.19525 712.91 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="233" mergeId="0" BBOX="470.31412 712.91 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="234" mergeId="0" BBOX="472.73315 712.91 6.5866203 4.5209403" RGB = "[1.0]">m</Char>
+			<Char id="235" mergeId="0" BBOX="480.30087 712.8194 3.8686202 4.6115403" RGB = "[1.0]">a</Char>
+			<Char id="236" mergeId="0" BBOX="485.22952 712.91 1.1868601 6.4326005" RGB = "[1.0]">l</Char>
+		</Word>
+		<Word id="55">
+			<Char id="237" mergeId="0" BBOX="490.34518 712.91 3.7417803 6.10644" RGB = "[1.0]">E</Char>
+			<Char id="238" mergeId="0" BBOX="494.98392 712.91 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="239" mergeId="0" BBOX="499.8038 712.91 3.7508402 4.4212804" RGB = "[1.0]">z</Char>
+			<Char id="240" mergeId="0" BBOX="503.82645 710.91675 4.4756403 6.41448" RGB = "[1.0]">y</Char>
+			<Char id="241" mergeId="0" BBOX="508.9363 712.91 6.5866203 4.5209403" RGB = "[1.0]">m</Char>
+			<Char id="242" mergeId="0" BBOX="516.4379 712.8284 4.09512 4.6024804" RGB = "[1.0]">e</Char>
+			<Char id="243" mergeId="0" BBOX="521.1491 712.8194 3.18912 4.6115403" RGB = "[1.0]">s</Char>
+		</Word>
+		<Word id="56">
+			<Char id="244" mergeId="0" BBOX="527.6069 712.91 3.02604 6.5322604" RGB = "[1.0]">f</Char>
+			<Char id="245" mergeId="0" BBOX="530.7144 712.8194 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="246" mergeId="0" BBOX="536.0508 712.91 2.57304 4.5209403" RGB = "[1.0]">r</Char>
+		</Word>
+	</Line>
+	<Line id="6" BBOX="392.6 700.95 539.57477 700.95">
+		<Word id="57">
+			<Char id="247" mergeId="0" BBOX="393.22516 700.85944 4.81992 6.19704" RGB = "[1.0]">U</Char>
+			<Char id="248" mergeId="0" BBOX="399.18665 700.95 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="249" mergeId="0" BBOX="404.38705 700.85944 4.0588803 4.5118804" RGB = "[1.0]">u</Char>
+			<Char id="250" mergeId="0" BBOX="409.3157 700.85944 3.18912 4.6115403" RGB = "[1.0]">s</Char>
+			<Char id="251" mergeId="0" BBOX="413.438 700.85944 4.0588803 4.5118804" RGB = "[1.0]">u</Char>
+			<Char id="252" mergeId="0" BBOX="418.33038 700.85944 3.8686202 4.6115403" RGB = "[1.0]">a</Char>
+			<Char id="253" mergeId="0" BBOX="423.25903 700.95 1.1868601 6.4326005" RGB = "[1.0]">l</Char>
+		</Word>
+		<Word id="58">
+			<Char id="254" mergeId="0" BBOX="428.17712 700.85944 4.77462 6.28764" RGB = "[1.0]">C</Char>
+			<Char id="255" mergeId="0" BBOX="433.51346 700.85944 3.8686202 4.6115403" RGB = "[1.0]">a</Char>
+			<Char id="256" mergeId="0" BBOX="438.41492 700.95 2.57304 4.5209403" RGB = "[1.0]">r</Char>
+			<Char id="257" mergeId="0" BBOX="441.70374 700.85944 4.4665804 6.5232005" RGB = "[1.0]">b</Char>
+			<Char id="258" mergeId="0" BBOX="446.75015 700.85944 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="259" mergeId="0" BBOX="452.07742 700.95 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="260" mergeId="0" BBOX="456.99182 702.8798 3.9864001 0.74292004" RGB = "[1.0]">–</Char>
+			<Char id="261" mergeId="0" BBOX="461.6215 700.85944 4.02264 6.28764" RGB = "[1.0]">S</Char>
+			<Char id="262" mergeId="0" BBOX="466.532 700.85944 4.0588803 4.5118804" RGB = "[1.0]">u</Char>
+			<Char id="263" mergeId="0" BBOX="471.73245 700.95 1.1868601 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="264" mergeId="0" BBOX="473.74686 700.95 3.02604 6.5322604" RGB = "[1.0]">f</Char>
+			<Char id="265" mergeId="0" BBOX="477.10812 700.85944 4.0588803 4.5118804" RGB = "[1.0]">u</Char>
+			<Char id="266" mergeId="0" BBOX="482.28137 700.95 2.57304 4.5209403" RGB = "[1.0]">r</Char>
+		</Word>
+		<Word id="59">
+			<Char id="267" mergeId="0" BBOX="488.35516 700.8956 4.31256 6.2061005" RGB = "[1.0]">B</Char>
+			<Char id="268" mergeId="0" BBOX="493.3291 700.85944 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="269" mergeId="0" BBOX="498.65637 700.95 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="270" mergeId="0" BBOX="503.59406 700.85944 4.4394 6.5232005" RGB = "[1.0]">d</Char>
+		</Word>
+		<Word id="60">
+			<Char id="271" mergeId="0" BBOX="512.0051 700.95 3.5877602 6.10644" RGB = "[1.0]">F</Char>
+			<Char id="272" mergeId="0" BBOX="516.3177 700.85944 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="273" mergeId="0" BBOX="521.65405 700.95 2.57304 4.5209403" RGB = "[1.0]">r</Char>
+			<Char id="274" mergeId="0" BBOX="524.9429 700.95 6.5866203 4.5209403" RGB = "[1.0]">m</Char>
+			<Char id="275" mergeId="0" BBOX="532.4083 700.85944 3.8686202 4.6115403" RGB = "[1.0]">a</Char>
+			<Char id="276" mergeId="0" BBOX="537.01984 702.9523 2.3284202 0.80634004" RGB = "[1.0]">-</Char>
+		</Word>
+	</Line>
+	<Line id="7" BBOX="392.6 688.93 521.6186 688.93">
+		<Word id="61">
+			<Char id="277" mergeId="0" BBOX="392.75403 688.8394 2.81766 5.6625004" RGB = "[1.0]">t</Char>
+			<Char id="278" mergeId="0" BBOX="396.29648 688.93 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="279" mergeId="0" BBOX="398.47995 688.8394 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="280" mergeId="0" BBOX="403.80722 688.93 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+		</Word>
+		<Word id="62">
+			<Char id="281" mergeId="0" BBOX="411.67923 688.93 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="282" mergeId="0" BBOX="414.09827 688.93 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+		</Word>
+		<Word id="63">
+			<Char id="283" mergeId="0" BBOX="421.54153 688.93 4.6477804 6.10644" RGB = "[1.0]">T</Char>
+			<Char id="284" mergeId="0" BBOX="426.85974 688.93 4.0498204 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="285" mergeId="0" BBOX="431.94238 688.93 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="286" mergeId="0" BBOX="434.12585 688.84845 4.09512 4.6024804" RGB = "[1.0]">e</Char>
+			<Char id="287" mergeId="0" BBOX="439.07263 688.93 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="288" mergeId="0" BBOX="444.1071 688.8394 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="289" mergeId="0" BBOX="449.18973 688.8394 4.4394 6.5232005" RGB = "[1.0]">d</Char>
+			<Char id="290" mergeId="0" BBOX="454.48077 688.8394 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="291" mergeId="0" BBOX="459.84427 688.93 1.1868601 6.4326005" RGB = "[1.0]">l</Char>
+			<Char id="292" mergeId="0" BBOX="462.1002 688.93 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="293" mergeId="0" BBOX="464.51923 688.93 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+		</Word>
+		<Word id="64">
+			<Char id="294" mergeId="0" BBOX="472.54514 688.8756 4.31256 6.2061005" RGB = "[1.0]">B</Char>
+			<Char id="295" mergeId="0" BBOX="477.6912 688.93 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="296" mergeId="0" BBOX="479.87466 688.8394 4.5118804 4.6115403" RGB = "[1.0]">o</Char>
+			<Char id="297" mergeId="0" BBOX="484.96637 688.8394 3.18912 4.6115403" RGB = "[1.0]">s</Char>
+			<Char id="298" mergeId="0" BBOX="488.5813 686.93677 4.4756403 6.41448" RGB = "[1.0]">y</Char>
+			<Char id="299" mergeId="0" BBOX="493.78265 688.93 4.08606 4.5209403" RGB = "[1.0]">n</Char>
+			<Char id="300" mergeId="0" BBOX="498.5663 688.8394 2.81766 5.6625004" RGB = "[1.0]">t</Char>
+			<Char id="301" mergeId="0" BBOX="502.20844 688.93 4.0498204 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="302" mergeId="0" BBOX="507.11896 688.84845 4.09512 4.6024804" RGB = "[1.0]">e</Char>
+			<Char id="303" mergeId="0" BBOX="511.83017 688.8394 3.18912 4.6115403" RGB = "[1.0]">s</Char>
+			<Char id="304" mergeId="0" BBOX="515.8709 688.93 1.38618 6.3963604" RGB = "[1.0]">i</Char>
+			<Char id="305" mergeId="0" BBOX="518.0671 688.8394 3.18912 4.6115403" RGB = "[1.0]">s</Char>
+		</Word>
+	</Line>
+	<Line id="8" BBOX="392.6 670.96 519.413 670.96">
+		<Word id="65">
+			<Char id="306" mergeId="0" BBOX="393.04395 670.86945 4.9286404 6.28764" RGB = "[1.0]">C</Char>
+			<Char id="307" mergeId="0" BBOX="397.85483 670.96 4.1041803 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="308" mergeId="0" BBOX="402.71097 670.86945 3.6783602 4.5753" RGB = "[1.0]">e</Char>
+			<Char id="309" mergeId="0" BBOX="406.71548 670.96 6.59568 4.4847" RGB = "[1.0]">m</Char>
+			<Char id="310" mergeId="0" BBOX="414.10843 670.92377 4.2853804 6.1789203" RGB = "[1.0]">B</Char>
+			<Char id="311" mergeId="0" BBOX="418.8737 670.96 1.9569601 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="312" mergeId="0" BBOX="421.00278 670.86945 4.1494803 4.5753" RGB = "[1.0]">o</Char>
+			<Char id="313" mergeId="0" BBOX="425.84988 670.86945 4.9286404 6.28764" RGB = "[1.0]">C</Char>
+			<Char id="314" mergeId="0" BBOX="430.66077 670.96 4.1041803 6.4326005" RGB = "[1.0]">h</Char>
+			<Char id="315" mergeId="0" BBOX="435.5169 670.86945 3.6783602 4.5753" RGB = "[1.0]">e</Char>
+			<Char id="316" mergeId="0" BBOX="439.52145 670.96 6.59568 4.4847" RGB = "[1.0]">m</Char>
+		</Word>
+		<Word id="66">
+			<Char id="317" mergeId="0" BBOX="449.78958 670.96 4.04076 5.9886603" RGB = "[1.0]">2</Char>
+			<Char id="318" mergeId="0" BBOX="454.60043 670.86945 4.2944403 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="319" mergeId="0" BBOX="460.02737 670.96 2.45526 5.8890004" RGB = "[1.0]">1</Char>
+			<Char id="320" mergeId="0" BBOX="464.38522 670.86945 4.35786 6.0702004" RGB = "[1.0]">6</Char>
+			<Char id="321" mergeId="0" BBOX="469.174 669.8547 1.42242 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="67">
+			<Char id="322" mergeId="0" BBOX="475.18304 670.96 1.9750801 5.8890004" RGB = "[1.0]">1</Char>
+			<Char id="323" mergeId="0" BBOX="478.48993 670.96906 4.3488 5.8890004" RGB = "[1.0]">7</Char>
+			<Char id="324" mergeId="0" BBOX="482.72403 669.8547 1.42242 2.24688" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="68">
+			<Char id="325" mergeId="0" BBOX="487.6809 670.96 3.7146 5.8890004" RGB = "[1.0]">7</Char>
+			<Char id="326" mergeId="0" BBOX="492.15146 670.86945 3.9592202 6.0792603" RGB = "[1.0]">9</Char>
+			<Char id="327" mergeId="0" BBOX="496.77206 670.86945 3.9592202 6.0792603" RGB = "[1.0]">9</Char>
+			<Char id="328" mergeId="0" BBOX="501.293 672.98944 3.9864001 0.5436" RGB = "[1.0]">–</Char>
+			<Char id="329" mergeId="0" BBOX="505.8864 670.86945 3.9773402 6.0792603" RGB = "[1.0]">8</Char>
+			<Char id="330" mergeId="0" BBOX="510.48892 670.86945 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="331" mergeId="0" BBOX="515.1729 670.86945 3.6783602 6.0792603" RGB = "[1.0]">3</Char>
+		</Word>
+	</Line>
+	<Line id="9" BBOX="392.6 652.99 505.91452 652.99">
+		<Word id="69">
+			<Char id="332" mergeId="0" BBOX="393.28857 652.9447 5.01018 6.19704" RGB = "[1.0]">D</Char>
+			<Char id="333" mergeId="0" BBOX="398.96014 652.8994 5.5809603 6.2967005" RGB = "[1.0]">O</Char>
+			<Char id="334" mergeId="0" BBOX="405.54675 652.99 0.78822005 6.10644" RGB = "[1.0]">I</Char>
+			<Char id="335" mergeId="0" BBOX="408.25208 652.8994 1.0872 4.32162" RGB = "[1.0]">:</Char>
+		</Word>
+		<Word id="70">
+			<Char id="336" mergeId="0" BBOX="415.19672 652.99 1.9660201 5.8890004" RGB = "[1.0]">1</Char>
+			<Char id="337" mergeId="0" BBOX="419.1971 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="338" mergeId="0" BBOX="423.97174 652.8994 1.07814 1.1325" RGB = "[1.0]">.</Char>
+			<Char id="339" mergeId="0" BBOX="426.32733 652.99 1.9660201 5.8890004" RGB = "[1.0]">1</Char>
+			<Char id="340" mergeId="0" BBOX="430.3228 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="341" mergeId="0" BBOX="434.94342 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="342" mergeId="0" BBOX="439.65463 652.99 3.7599 5.9886603" RGB = "[1.0]">2</Char>
+			<Char id="343" mergeId="0" BBOX="443.86752 652.63666 3.1347601 6.55944" RGB = "[1.0]">/</Char>
+			<Char id="344" mergeId="0" BBOX="447.31937 652.8994 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="345" mergeId="0" BBOX="451.65005 652.8994 4.1947803 6.5232005" RGB = "[1.0]">b</Char>
+			<Char id="346" mergeId="0" BBOX="456.86362 652.99 1.03284 6.2151604" RGB = "[1.0]">i</Char>
+			<Char id="347" mergeId="0" BBOX="458.739 652.8994 3.46092 4.5662403" RGB = "[1.0]">c</Char>
+			<Char id="348" mergeId="0" BBOX="462.9157 652.8994 1.07814 1.1325" RGB = "[1.0]">.</Char>
+			<Char id="349" mergeId="0" BBOX="464.7368 652.99 3.7599 5.9886603" RGB = "[1.0]">2</Char>
+			<Char id="350" mergeId="0" BBOX="469.26678 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="351" mergeId="0" BBOX="474.5125 652.99 1.9660201 5.8890004" RGB = "[1.0]">1</Char>
+			<Char id="352" mergeId="0" BBOX="478.5714 652.8994 3.6602402 5.9796004" RGB = "[1.0]">5</Char>
+			<Char id="353" mergeId="0" BBOX="483.1286 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="354" mergeId="0" BBOX="487.7492 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+			<Char id="355" mergeId="0" BBOX="492.36075 652.8994 4.04076 6.0702004" RGB = "[1.0]">6</Char>
+			<Char id="356" mergeId="0" BBOX="497.18973 652.99 3.7146 5.8890004" RGB = "[1.0]">7</Char>
+			<Char id="357" mergeId="0" BBOX="501.61102 652.8994 4.0045204 6.0792603" RGB = "[1.0]">0</Char>
+		</Word>
+		<Word id="2">
+			<Char id="436" mergeId="0" BBOX="42.52 81.014 510.236 3.4582977" RGB="unknown">fraction(-)</Char>
+		</Word>
+	</Line>
+	<Line id="10" BBOX="46.77 69.11 304.52182 69.11">
+		<Word id="71">
+			<Char id="358" mergeId="0" BBOX="47.10957 69.0407 3.7699199 4.80942" RGB = "[1.0]">C</Char>
+			<Char id="359" mergeId="0" BBOX="50.7894 69.11 3.1392899 4.9203" RGB = "[1.0]">h</Char>
+			<Char id="360" mergeId="0" BBOX="54.50388 69.0407 2.81358 3.49965" RGB = "[1.0]">e</Char>
+			<Char id="361" mergeId="0" BBOX="57.566936 69.11 5.0450397 3.4303498" RGB = "[1.0]">m</Char>
+			<Char id="362" mergeId="0" BBOX="63.221817 69.08228 3.27789 4.7262597" RGB = "[1.0]">B</Char>
+			<Char id="363" mergeId="0" BBOX="66.7977 69.11 1.4968799 4.7539797" RGB = "[1.0]">i</Char>
+			<Char id="364" mergeId="0" BBOX="68.42625 69.0407 3.17394 3.49965" RGB = "[1.0]">o</Char>
+			<Char id="365" mergeId="0" BBOX="72.1338 69.0407 3.7699199 4.80942" RGB = "[1.0]">C</Char>
+			<Char id="366" mergeId="0" BBOX="75.81363 69.11 3.1392899 4.9203" RGB = "[1.0]">h</Char>
+			<Char id="367" mergeId="0" BBOX="79.528114 69.0407 2.81358 3.49965" RGB = "[1.0]">e</Char>
+			<Char id="368" mergeId="0" BBOX="82.59117 69.11 5.0450397 3.4303498" RGB = "[1.0]">m</Char>
+		</Word>
+		<Word id="72">
+			<Char id="369" mergeId="0" BBOX="90.43799 69.11 3.09078 4.58073" RGB = "[1.0]">2</Char>
+			<Char id="370" mergeId="0" BBOX="94.11782 69.0407 3.2848198 4.6500297" RGB = "[1.0]">0</Char>
+			<Char id="371" mergeId="0" BBOX="98.26889 69.11 1.87803 4.5045" RGB = "[1.0]">1</Char>
+			<Char id="372" mergeId="0" BBOX="101.60222 69.0407 3.33333 4.6431" RGB = "[1.0]">6</Char>
+			<Char id="373" mergeId="0" BBOX="105.28781 68.26454 1.08801 1.71864" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="73">
+			<Char id="374" mergeId="0" BBOX="109.83731 69.11 1.5107399 4.5045" RGB = "[1.0]">1</Char>
+			<Char id="375" mergeId="0" BBOX="112.36676 69.11693 3.3263998 4.5045" RGB = "[1.0]">7</Char>
+			<Char id="376" mergeId="0" BBOX="115.59782 68.26454 1.08801 1.71864" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="74">
+			<Char id="377" mergeId="0" BBOX="119.24785 69.0407 3.04227 4.6500297" RGB = "[1.0]">8</Char>
+			<Char id="378" mergeId="0" BBOX="122.92502 69.11 2.8413 4.5045" RGB = "[1.0]">7</Char>
+			<Char id="379" mergeId="0" BBOX="126.29993 69.0407 3.09078 4.6431" RGB = "[1.0]">6</Char>
+		</Word>
+		<Word id="75">
+			<Char id="380" mergeId="0" BBOX="387.68948 69.3179 4.19265 4.28274" RGB = "[1.0]">Ó</Char>
+		</Word>
+		<Word id="76">
+			<Char id="381" mergeId="0" BBOX="394.78348 69.11 2.8759499 4.58073" RGB = "[1.0]">2</Char>
+			<Char id="382" mergeId="0" BBOX="398.24255 69.0407 3.0630598 4.6500297" RGB = "[1.0]">0</Char>
+			<Char id="383" mergeId="0" BBOX="402.25504 69.11 1.5038099 4.5045" RGB = "[1.0]">1</Char>
+			<Char id="384" mergeId="0" BBOX="405.30423 69.0407 3.09078 4.6431" RGB = "[1.0]">6</Char>
+		</Word>
+		<Word id="77">
+			<Char id="385" mergeId="0" BBOX="410.78394 69.11 5.7033896 4.6708198" RGB = "[1.0]">W</Char>
+			<Char id="386" mergeId="0" BBOX="416.93777 69.11 0.79002 4.7539797" RGB = "[1.0]">i</Char>
+			<Char id="387" mergeId="0" BBOX="418.61484 69.11 0.60984 4.9203" RGB = "[1.0]">l</Char>
+			<Char id="388" mergeId="0" BBOX="419.95926 69.04763 2.95911 3.49272" RGB = "[1.0]">e</Char>
+			<Char id="389" mergeId="0" BBOX="423.2233 67.5854 3.1531498 4.87872" RGB = "[1.0]">y</Char>
+			<Char id="390" mergeId="0" BBOX="426.61203 70.75934 1.71171 0.45045" RGB = "[1.0]">-</Char>
+			<Char id="391" mergeId="0" BBOX="428.52472 69.11 3.86001 4.6708198" RGB = "[1.0]">V</Char>
+			<Char id="392" mergeId="0" BBOX="432.64114 69.0407 3.5481598 4.80942" RGB = "[1.0]">C</Char>
+			<Char id="393" mergeId="0" BBOX="436.95853 69.11 3.47193 4.6708198" RGB = "[1.0]">H</Char>
+		</Word>
+		<Word id="78">
+			<Char id="394" mergeId="0" BBOX="443.1377 69.11 3.86001 4.6708198" RGB = "[1.0]">V</Char>
+			<Char id="395" mergeId="0" BBOX="446.88797 69.04763 2.95911 3.49272" RGB = "[1.0]">e</Char>
+			<Char id="396" mergeId="0" BBOX="450.5751 69.11 1.68399 3.4303498" RGB = "[1.0]">r</Char>
+			<Char id="397" mergeId="0" BBOX="452.82733 69.11 0.60984 4.9203" RGB = "[1.0]">l</Char>
+			<Char id="398" mergeId="0" BBOX="454.15097 69.0407 2.67498 3.49965" RGB = "[1.0]">a</Char>
+			<Char id="399" mergeId="0" BBOX="457.4912 67.668564 3.13236 4.87179" RGB = "[1.0]">g</Char>
+		</Word>
+		<Word id="79">
+			<Char id="400" mergeId="0" BBOX="463.4795 69.06842 3.83229 4.76091" RGB = "[1.0]">G</Char>
+			<Char id="401" mergeId="0" BBOX="468.17804 69.11 4.81635 3.4303498" RGB = "[1.0]">m</Char>
+			<Char id="402" mergeId="0" BBOX="473.9507 69.0407 3.20859 4.9895997" RGB = "[1.0]">b</Char>
+			<Char id="403" mergeId="0" BBOX="477.96317 69.11 3.47193 4.6708198" RGB = "[1.0]">H</Char>
+		</Word>
+		<Word id="80">
+			<Char id="404" mergeId="0" BBOX="483.34485 69.0407 3.9570298 4.81635" RGB = "[1.0]">&amp;</Char>
+		</Word>
+		<Word id="81">
+			<Char id="405" mergeId="0" BBOX="488.7052 69.0407 3.5481598 4.80942" RGB = "[1.0]">C</Char>
+			<Char id="406" mergeId="0" BBOX="492.76334 69.0407 3.27789 3.49965" RGB = "[1.0]">o</Char>
+			<Char id="407" mergeId="0" BBOX="496.6857 69.0407 0.82466996 0.86625" RGB = "[1.0]">.</Char>
+		</Word>
+		<Word id="82">
+			<Char id="408" mergeId="0" BBOX="500.38666 69.11 3.2986798 4.6708198" RGB = "[1.0]">K</Char>
+			<Char id="409" mergeId="0" BBOX="503.85858 69.06842 3.83229 4.76091" RGB = "[1.0]">G</Char>
+			<Char id="410" mergeId="0" BBOX="508.3215 69.0407 2.67498 3.49965" RGB = "[1.0]">a</Char>
+			<Char id="411" mergeId="0" BBOX="511.57166 69.11 3.90852 4.6708198" RGB = "[1.0]">A</Char>
+			<Char id="412" mergeId="0" BBOX="515.77124 68.26454 1.08801 1.71864" RGB = "[1.0]">,</Char>
+		</Word>
+		<Word id="83">
+			<Char id="413" mergeId="0" BBOX="519.29395 69.11 5.7033896 4.6708198" RGB = "[1.0]">W</Char>
+			<Char id="414" mergeId="0" BBOX="525.29535 69.04763 2.95911 3.49272" RGB = "[1.0]">e</Char>
+			<Char id="415" mergeId="0" BBOX="528.9128 69.11 0.79002 4.7539797" RGB = "[1.0]">i</Char>
+			<Char id="416" mergeId="0" BBOX="530.56213 69.11 2.88288 3.4303498" RGB = "[1.0]">n</Char>
+			<Char id="417" mergeId="0" BBOX="534.4153 69.11 2.85516 4.9203" RGB = "[1.0]">h</Char>
+			<Char id="418" mergeId="0" BBOX="537.9981 69.04763 2.95911 3.49272" RGB = "[1.0]">e</Char>
+			<Char id="419" mergeId="0" BBOX="541.61554 69.11 0.79002 4.7539797" RGB = "[1.0]">i</Char>
+			<Char id="420" mergeId="0" BBOX="543.2649 69.11 4.81635 3.4303498" RGB = "[1.0]">m</Char>
+			<Char id="421" mergeId="0" BBOX="290.9952 69.0194 3.9773402 6.0792603" RGB = "[1.0]">8</Char>
+			<Char id="422" mergeId="0" BBOX="295.79703 69.11 3.7146 5.8890004" RGB = "[1.0]">7</Char>
+			<Char id="423" mergeId="0" BBOX="300.20926 69.0194 4.04076 6.0702004" RGB = "[1.0]">6</Char>
+		</Word>
+	</Line>
+	<Line id="11" BBOX="427.18 798.58 514.0128 798.58">
+		<Word id="84">
+			<Char id="424" mergeId="0" BBOX="427.70255 798.4307 7.8681097 10.36142" RGB = "[0.44]">C</Char>
+			<Char id="425" mergeId="0" BBOX="436.55603 798.4307 7.4351397 7.5993695" RGB = "[0.44]">o</Char>
+			<Char id="426" mergeId="0" BBOX="445.3498 798.58 4.24012 7.45007" RGB = "[0.44]">r</Char>
+			<Char id="427" mergeId="0" BBOX="450.7843 798.58 4.24012 7.45007" RGB = "[0.44]">r</Char>
+			<Char id="428" mergeId="0" BBOX="456.09937 798.58 2.2842898 10.54058" RGB = "[0.44]">i</Char>
+			<Char id="429" mergeId="0" BBOX="459.6975 795.47455 7.1813297 10.55551" RGB = "[0.44]">g</Char>
+			<Char id="430" mergeId="0" BBOX="468.23746 798.4456 6.7483597 7.5844398" RGB = "[0.44]">e</Char>
+			<Char id="431" mergeId="0" BBOX="476.38925 798.58 6.73343 7.45007" RGB = "[0.44]">n</Char>
+			<Char id="432" mergeId="0" BBOX="484.5261 798.4307 7.3156996 10.749599" RGB = "[0.44]">d</Char>
+			<Char id="433" mergeId="0" BBOX="493.66324 798.4307 6.6886396 7.4351397" RGB = "[0.44]">u</Char>
+			<Char id="434" mergeId="0" BBOX="502.17334 798.58 10.85411 7.45007" RGB = "[0.44]">m</Char>
+		</Word>
+	</Line>
+</Page>
+</Document>
