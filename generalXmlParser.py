@@ -5,6 +5,7 @@ import helpers.pdfToXmlHelper as pdfToXmlHelper
 import helpers.xmlToJsonHelper as xmlToJsonHelper
 import helpers.fileIOHelper as fileIOHelper
 import config
+from postprocess import cleanJson
 
 # given a path to a pdf file, parse the pdf file and output a json file
 # both symbol scraper and xml parser are run
@@ -23,14 +24,20 @@ def parseFile(pdfPath: str):
         os.system(
             "SymbolScraper/bin/sscraper " + pdfPath + " " + tempDirPath + " > /dev/null"
         )
+        print("Step 1: Parse PDF into XML using Symbol Scraper, written to:", xmlPath)
     # don't parse xml if json already exists
     targetJsonPath = os.getcwd() + "/result/" + pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetJsonPath):
         print("JSON file already exists")
-        parse(xmlPath)
-        return
+        # parse(xmlPath)
     else:    
         parse(xmlPath)
+    targetCleanJsonPath = os.getcwd() + "/final_result/" + pdfPath.split("/")[-1][:-4] + ".json"
+    if os.path.exists(targetCleanJsonPath):
+        print("Clean JSON file already exists")
+        return
+    else:
+        cleanJson(targetJsonPath)
     # clean up useless .md files created by SymbolScraper
     pdfDirPath = os.path.dirname(pdfPath)
     for mdFile in os.listdir(pdfDirPath):
@@ -86,7 +93,7 @@ def parse(inputXml: str):
             # if the line is a graph, skip the rest of the page
             if xmlToJsonHelper.checkEndOfPage(lineContent):
                 break
-    fileIOHelper.outputJsonFile(inputXml, output)
+    fileIOHelper.outputDirtyJsonFile(inputXml, output)
 
 # main function
 if __name__ == "__main__":
