@@ -79,6 +79,10 @@ def parse(inputXml: str):
                 lineContent =xmlToJsonHelper.updateText(lineContent, word)
             lineContent = lineContent.strip()
 
+            # if the line is a graph, skip the rest of the page
+            # fullText will not have the rest of page either
+            if xmlToJsonHelper.checkEndOfPage(lineContent):
+                break
             # update outputs
             output["fullText"] = xmlToJsonHelper.updateText(output["fullText"], lineContent)
             if xmlToJsonHelper.checkNewParagraph(lineXMLBBOX, prevLineBBOX, paragraphStart):
@@ -90,9 +94,6 @@ def parse(inputXml: str):
                 prevLineBBOX = xmlToJsonHelper.combineLines(lineXMLBBOX, prevLineBBOX)
             else:
                 prevLineBBOX = lineXMLBBOX
-            # if the line is a graph, skip the rest of the page
-            if xmlToJsonHelper.checkEndOfPage(lineContent):
-                break
     fileIOHelper.outputDirtyJsonFile(inputXml, output)
 
 # main function
@@ -110,6 +111,9 @@ if __name__ == "__main__":
             parseFile(inputfile)
         elif opt == "-c":
             fileIOHelper.cleanFolders()
+            cwd = os.getcwd()
+            target_dir = os.path.join(cwd, config.defaultDir)
+            parseFolder(target_dir)
     if not opts:
         cwd = os.getcwd()
         target_dir = os.path.join(cwd, config.defaultDir)

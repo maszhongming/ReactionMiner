@@ -72,7 +72,8 @@ def checkStartParagrph(lineXmlBBOX, paragraphStart):
 # logic is done by checking if the page starts rendering graphs
 def checkEndOfPage(text):
     text = text.lower()
-    if re.match("^(scheme|table|figure) [1-9]. ", text):
+    # check if line starts with one of figure keywords (ignoring case)
+    if re.match("^(scheme|table|figure) [1-9]. ", text) or re.match("^fig. [0-9]+", text):
         return True
     else:
         return False

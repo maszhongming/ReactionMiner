@@ -7,6 +7,6 @@ __pycache__/
 testFiles.zip
 testFiles/
 temp/
-final_result/
-result/
-xmlFiles/
+final_result**/
+result**/
+xmlFiles**/
