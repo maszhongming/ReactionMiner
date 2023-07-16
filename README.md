@@ -16,9 +16,9 @@ There are two ways of running this PDF converter.
 
 The first way is simply running `python3 generalXmlParser.py`. This will parse all the PDFs inside the directory specified in [config.py](/config.py).
 
-The second way is running `python3 xmlParser.py -i /path/to/pdf`. This only parses the PDF specified.
+The second way is running `python3 generalXmlParser.py -i /path/to/pdf`. This only parses the PDF specified.
 
-To clean the results and xmlFiles directory, run `python3 xmlParser.py -c`.
+To clean the results and xmlFiles directory, run `python3 generalXmlParser.py -c`.
 
 If successful, a .json file with all the text information will be generated at [result](/result) directory.
 
