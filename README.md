@@ -14,7 +14,7 @@ Once compiled successfully, an executable will be generated at SymbolScraper/bin
 
 There are two ways of running this PDF converter.
 
-The first way is simply running `python3 xmlParser.py`. This will parse all the PDFs inside the directory specified in [config.py](/config.py).
+The first way is simply running `python3 generalXmlParser.py`. This will parse all the PDFs inside the directory specified in [config.py](/config.py).
 
 The second way is running `python3 xmlParser.py -i /path/to/pdf`. This only parses the PDF specified.
 
