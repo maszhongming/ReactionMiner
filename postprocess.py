@@ -5,7 +5,7 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModel
 import math
 from helpers.fileIOHelper import outputCleanJsonFile
-
+import time 
 device = torch.device(4)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 mpnet_tokenizer = AutoTokenizer.from_pretrained(
@@ -15,7 +15,7 @@ mpnet_model = AutoModel.from_pretrained(
     "sentence-transformers/all-mpnet-base-v2", output_hidden_states=True
 ).to(device)
 
-def cleanJson(jsonPath, title = '', threshold = 0.2):
+def cleanJson(jsonPath, title = '', threshold = 0.12):
     with open(jsonPath) as fin:
         contents = fin.read()
         # Strip any leading/trailing whitespace
@@ -77,7 +77,7 @@ def get_longest_string_first_half(strings):
     
     return longest
 
-def clean_paragraphs(paragraphs, title = '', threshold = 0.3):
+def clean_paragraphs(paragraphs, title = '', threshold = 0.12):
     
     cleaned_paragraphs = []
 
@@ -95,60 +95,63 @@ def clean_paragraphs(paragraphs, title = '', threshold = 0.3):
     for idx, paragraph in enumerate(paragraphs):
 
         score = similarity(anchor_paragraphs, paragraph)
-        
+        # if score>0.12 and score<=0.15:
+        #     print()
+        #     print("printing trash info:")
+        #     print(paragraph)
+        #     print(score)
         if score > threshold:
             
             # print(idx, score, paragraph)
             # print()
             
             cleaned_paragraphs.append(paragraph)
-            
+            # print(paragraph)
+            # print()
             if len(anchor_paragraphs) == 5:
                 del anchor_paragraphs[0]
                 anchor_paragraphs.append(paragraph)
             
-            curr_paragraph = paragraph
-            curr_paragraph_idx = idx
+            # curr_paragraph = paragraph
+            # curr_paragraph_idx = idx
     
     return cleaned_paragraphs
 
-
+# need to fix bugs
 def concat_paragraphs(paragraphs):
     complete_paragraphs = []
     curr_idx = 0
     paragraph = ""
-
+    # print("_________________________________________")
     for idx, current_segment in enumerate(paragraphs):
         terminals = [".", "?", "!"]
+        # print("this is the original segment: ")
+        # print(current_segment)
+        # print()
         if not current_segment:
             continue
         if (
-            current_segment[0].isupper() and current_segment[-1] in terminals
-        ) and paragraph != "":  # clean up trash
-            paragraph = ""
-            complete_paragraphs.append(current_segment)
-        elif (
-            current_segment[0].isupper() and current_segment[-1] in terminals
-            or idx == 0
-            or idx == len(paragraphs) - 1
+            ( current_segment[-1] in terminals
+            or idx== len(paragraphs) - 1 
+            or idx==0 ) and paragraph == ""
         ):  # Complete a paragraph
             complete_paragraphs.append(current_segment)
+            # print("printing something:")
+            # print(current_segment)
+            # print()
         elif (
-            current_segment[0].isupper() and current_segment[-1] in terminals
-        ):  # Start of a paragraph
-            paragraph = current_segment
-        elif (
-            current_segment[0].isupper() == False
-            and current_segment[-1] not in terminals
+            current_segment[-1] not in terminals
         ):  # Middle of a paragraph
             paragraph += current_segment
         elif (
-            current_segment[0].isupper() and current_segment[-1] in terminals
+            current_segment[-1] in terminals
         ):  # End of a paragraph
             paragraph += current_segment
             complete_paragraphs.append(paragraph)
+            # print("printing something:")
+            # print(paragraph)
+            # print()
             paragraph = ""
-
     return complete_paragraphs
 
 if __name__ == "__main__":

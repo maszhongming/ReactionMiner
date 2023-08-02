@@ -73,7 +73,7 @@ def checkStartParagrph(lineXmlBBOX, paragraphStart):
 def checkEndOfPage(text):
     text = text.lower()
     # check if line starts with one of figure keywords (ignoring case)
-    if re.match("^(scheme|table|figure) [1-9]. ", text) or re.match("^fig. [0-9]+", text):
+    if re.match("^(scheme|table|figure) [1-9]+", text) or re.match("^fig. [0-9]+", text):
         return True
     else:
         return False
