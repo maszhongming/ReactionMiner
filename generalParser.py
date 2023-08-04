@@ -81,7 +81,7 @@ def parse(inputXml: str):
 
             # if the line is a graph, skip the rest of the page
             # fullText will not have the rest of page either
-            if xmlToJsonHelper.checkEndOfPage(lineContent):
+            if xmlToJsonHelper.checkEndOfPage(lineContent) and xmlToJsonHelper.checkNewParagraph(lineXMLBBOX, prevLineBBOX, paragraphStart):
                 break
             # update outputs
             output["fullText"] = xmlToJsonHelper.updateText(output["fullText"], lineContent)

@@ -42,17 +42,6 @@ def buildWord(wordXml):
         )
     return wordBuf
 
-# def checkSideLine(lineXml):
-#     location = lineXml.attrib["BBOX"].split(" ")[0]
-#     return location in ["9.0", "18.0"]
-
-
-# def checkIgnoredPrefix(line):
-#     for prefix in ignoredSuffix:
-#         if line.startswith(prefix):
-#             return True
-#     return False
-
 # find the two most common line start positions
 def findOffset(root):
     lineStartPos = collections.defaultdict(int)

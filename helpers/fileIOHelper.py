@@ -38,7 +38,7 @@ def cleanFolders():
     path = os.getcwd()
     xml_directory = path + "/xmlFiles/"
     result_directory = path + "/result/"
-    final_result_directory = path + "/final_result/"
+    final_result_directory = path + "/filtered_result/"
     if os.path.exists(xml_directory):
         shutil.rmtree(xml_directory)
     if os.path.exists(result_directory):
