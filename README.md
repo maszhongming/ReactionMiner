@@ -20,6 +20,6 @@ To parse a specific PDF, run `python3 generalParser.py -i /path/to/pdf`.
 
 After the program finishes, the resulting json files will be generated at [results](/results) directory.
 
-To clean the results and xmlFiles directory, run `python3 generalXmlParser.py -c`.
+To clean the results and xmlFiles directory, run `python3 generalParser.py -c`.
 
 If the parser doesn't generate a json file with expected paragraph format, try changing the constants such as tabwidth and lineheight in [config.py](/config.py).
