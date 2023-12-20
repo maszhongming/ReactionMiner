@@ -14,5 +14,9 @@ latest_chem/
 bio_paper/
 chem_paper/
 final_result**/
+parsed**/
+old_jacs/
+.vscode/
+test1/
 Thrust1CheckpointJSON/
 Thrust1CheckpointPDF/
