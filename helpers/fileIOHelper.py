@@ -5,7 +5,7 @@ import shutil
 def outputDirtyJsonFile(xmlPath, output):
     outputFileName = xmlPath.split("/")[-1][:-4] + ".json"
     path = os.getcwd()
-    result_directory = path + "/result/"
+    result_directory = path + "/parsed_raw/"
     if not os.path.exists(result_directory):
         os.mkdir(result_directory)
     outputFilePath = result_directory + outputFileName
@@ -17,7 +17,7 @@ def outputDirtyJsonFile(xmlPath, output):
 def outputCleanJsonFile(jsonPath, output):
     outputFileName = jsonPath.split("/")[-1][:-5] + ".json"
     path = os.getcwd()
-    result_directory = path + "/final_result/"
+    result_directory = path + "/parsed_postprocess/"
     if not os.path.exists(result_directory):
         os.mkdir(result_directory)
     outputFilePath = result_directory + outputFileName
@@ -37,8 +37,8 @@ def validateFilename(inputfile: str):
 def cleanFolders():
     path = os.getcwd()
     xml_directory = path + "/xmlFiles/"
-    result_directory = path + "/result/"
-    final_result_directory = path + "/filtered_result/"
+    result_directory = path + "/parsed_raw/"
+    final_result_directory = path + "/parsed_postprocess/"
     if os.path.exists(xml_directory):
         shutil.rmtree(xml_directory)
     if os.path.exists(result_directory):

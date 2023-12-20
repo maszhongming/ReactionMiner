@@ -26,13 +26,13 @@ def parseFile(pdfPath: str):
         )
         print("Step 1: Parse PDF into XML using Symbol Scraper, written to:", xmlPath)
     # don't parse xml if json already exists
-    targetJsonPath = os.getcwd() + "/result/" + pdfPath.split("/")[-1][:-4] + ".json"
+    targetJsonPath = os.getcwd() + "/parsed_raw/" + pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetJsonPath):
         print("JSON file already exists")
         # parse(xmlPath)
     else:    
         parse(xmlPath)
-    targetCleanJsonPath = os.getcwd() + "/final_result/" + pdfPath.split("/")[-1][:-4] + ".json"
+    targetCleanJsonPath = os.getcwd() + "/parsed_postprocess/" + pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetCleanJsonPath):
         print("Clean JSON file already exists")
         return
