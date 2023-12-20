@@ -1,6 +1,6 @@
 # ReactIE-PDF-Conversion
 
-This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. See any .json file in parsed_postprocess folder, such as this one: [acs.accounts.3c00129.json](/example_journals_results/acs.accounts.3c00129.json) as an example.
+This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. See any .json file in parsed_postprocess folder, such as this one: [acs.accounts.3c00129.json](/example_journals_results/acs.accounts.3c00129.json) generated from this pdf: [acs.accounts.3c00129.pdf](/example_journals/acs.accounts.3c00129.pdf) as an example.
 
 ## Dependency
 
