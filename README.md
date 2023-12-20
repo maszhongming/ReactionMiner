@@ -12,11 +12,11 @@ Once compiled successfully, an executable will be generated at SymbolScraper/bin
 
 ## Usage
 
-To run the program against the provided example journals, simply run `python3 generalXmlParser.py`. This will parse all the PDFs inside the directory specified in [config.py](/config.py), which defaults to [example_journals](/example_journals).
+To run the program against the provided example journals, run `python3 generalParser.py`. This will parse all the PDFs inside the directory specified in [config.py](/config.py), which defaults to [example_journals](/example_journals).
 
-To parse a specific folder, first change the directory in [config.py](/config.py) to the desired folder, then run `python3 generalXmlParser.py`.
+To parse a specific folder, first change the directory in [config.py](/config.py) to the desired folder, then run `python3 generalParser.py`.
 
-To parse a specific PDF, run `python3 generalXmlParser.py -i /path/to/pdf`. 
+To parse a specific PDF, run `python3 generalParser.py -i /path/to/pdf`. 
 
 After the program finishes, the resulting json files will be generated at [results](/results) directory.
 
