@@ -29,10 +29,9 @@ def parseFile(pdfPath: str):
     targetJsonPath = os.getcwd() + "/parsed_raw/" + pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetJsonPath):
         print("JSON file already exists")
-        # parse(xmlPath)
     else:    
         parse(xmlPath)
-    targetCleanJsonPath = os.getcwd() + "/parsed_postprocess/" + pdfPath.split("/")[-1][:-4] + ".json"
+    targetCleanJsonPath = os.getcwd() + "/results/" + pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetCleanJsonPath):
         print("Clean JSON file already exists")
         return
@@ -104,16 +103,16 @@ if __name__ == "__main__":
     for opt, arg in opts:
         if opt == "-h":
             print("[Usage]: python3 xmlParser.py -i <inputPDF>")
-            print("Result will be saved as a .json in ./result/")
+            print("Result will be saved as a .json file in the results/ folder")
             sys.exit()
         elif opt == "-i":
             inputfile = arg
             parseFile(inputfile)
         elif opt == "-c":
             fileIOHelper.cleanFolders()
-            cwd = os.getcwd()
-            target_dir = os.path.join(cwd, config.defaultDir)
-            parseFolder(target_dir)
+            # cwd = os.getcwd()
+            # target_dir = os.path.join(cwd, config.defaultDir)
+            # parseFolder(target_dir)
     if not opts:
         cwd = os.getcwd()
         target_dir = os.path.join(cwd, config.defaultDir)

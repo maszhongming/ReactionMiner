@@ -17,7 +17,7 @@ def outputDirtyJsonFile(xmlPath, output):
 def outputCleanJsonFile(jsonPath, output):
     outputFileName = jsonPath.split("/")[-1][:-5] + ".json"
     path = os.getcwd()
-    result_directory = path + "/parsed_postprocess/"
+    result_directory = path + "/results/"
     if not os.path.exists(result_directory):
         os.mkdir(result_directory)
     outputFilePath = result_directory + outputFileName
@@ -38,7 +38,7 @@ def cleanFolders():
     path = os.getcwd()
     xml_directory = path + "/xmlFiles/"
     result_directory = path + "/parsed_raw/"
-    final_result_directory = path + "/parsed_postprocess/"
+    final_result_directory = path + "/results/"
     if os.path.exists(xml_directory):
         shutil.rmtree(xml_directory)
     if os.path.exists(result_directory):
