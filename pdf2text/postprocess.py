@@ -7,10 +7,10 @@ import torch
 from transformers import AutoModel, AutoTokenizer
 
 from .helpers.fileIOHelper import outputCleanJsonFile
+from .config import threshhold_value
 
 device = torch.device(0)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-threshhold_value = 0.12
 
 # import pretrained model
 mpnet_tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-mpnet-base-v2")
