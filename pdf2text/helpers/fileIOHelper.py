@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 
+
 def outputDirtyJsonFile(xmlPath, output):
     outputFileName = xmlPath.split("/")[-1][:-4] + ".json"
     path = os.getcwd()
@@ -13,6 +14,7 @@ def outputDirtyJsonFile(xmlPath, output):
         json.dump(output, outfile, indent=4, ensure_ascii=False)
     print("Step 2: Parsed PDF to JSON, written to:", outputFilePath)
     return outputFilePath
+
 
 def outputCleanJsonFile(jsonPath, output):
     outputFileName = jsonPath.split("/")[-1][:-5] + ".json"
@@ -26,15 +28,17 @@ def outputCleanJsonFile(jsonPath, output):
     print("Step 3: Cleaned JSON file, written to:", outputFilePath)
     return outputFilePath
 
-# given a path, make sure the path is valid (rename if needed)
-# valid path is returned
+
 def validateFilename(inputfile: str):
+    # given a path, make sure the path is valid (rename if needed)
+    # valid path is returned
     newFilename = inputfile.replace(" ", "_").replace("(", "_").replace(")", "_")
     os.rename(inputfile, newFilename)
     return newFilename
 
-# clear everything in the xml and result folder
+
 def cleanFolders():
+    # clear everything in the xml and result folder
     path = os.getcwd()
     xml_directory = path + "/xmlFiles/"
     result_directory = path + "/parsed_raw/"

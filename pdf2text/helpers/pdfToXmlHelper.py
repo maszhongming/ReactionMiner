@@ -1,6 +1,6 @@
 
-# given a path to an xml file, modify the file to make it a valid xml file
 def preParseXML(path):
+    # given a path to an xml file, modify the file to make it a valid xml file
     with open(path, "r") as file:
         filedata = file.read()
     # replace all invalid xml characters with valid ones
@@ -12,7 +12,7 @@ def preParseXML(path):
     # remove all ascii characters that are not tab, newline, or carriage return
     for invalidAscii in range(1, 31):
         if invalidAscii == 9 or invalidAscii == 10 or invalidAscii == 13:
-            continue   # tab, newline, carriage return 
+            continue   # tab, newline, carriage return
         char = chr(invalidAscii)
         filedata = filedata.replace(char, "")
     # write the modified xml file back to the original path

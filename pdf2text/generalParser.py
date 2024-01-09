@@ -1,15 +1,20 @@
 import xml.etree.ElementTree as ET
 import os
-import sys, getopt
+import sys
+import getopt
 import helpers.pdfToXmlHelper as pdfToXmlHelper
 import helpers.xmlToJsonHelper as xmlToJsonHelper
 import helpers.fileIOHelper as fileIOHelper
+import helpers.logHelper as logHelper
 import config
+import datetime
 from postprocess import cleanJson
 
-# given a path to a pdf file, parse the pdf file and output a json file
-# both symbol scraper and xml parser are run
+
 def parseFile(pdfPath: str):
+    # given a path to a pdf file, parse the pdf file and output a json file
+    # both symbol scraper and xml parser are run
+
     # create temp dir if not exist
     tempDirPath = "./xmlFiles/"
     if not os.path.exists(tempDirPath):
@@ -24,14 +29,22 @@ def parseFile(pdfPath: str):
         os.system(
             "SymbolScraper/bin/sscraper " + pdfPath + " " + tempDirPath + " > /dev/null"
         )
+        if not os.path.exists(xmlPath):
+            print("Error: SymbolScraper failed to parse", pdfPath)
+            logHelper.errorLog(pdfPath)
+            return
         print("Step 1: Parse PDF into XML using Symbol Scraper, written to:", xmlPath)
     # don't parse xml if json already exists
     targetJsonPath = os.getcwd() + "/parsed_raw/" + pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetJsonPath):
         print("JSON file already exists")
-    else:    
-        parse(xmlPath)
-    targetCleanJsonPath = os.getcwd() + "/results/" + pdfPath.split("/")[-1][:-4] + ".json"
+    else:
+        parseExitCode = parse(xmlPath)
+        if parseExitCode == -1:
+            print("Error: Parse XML failed, skipping", pdfPath)
+            return
+    targetCleanJsonPath = os.getcwd() + "/results/" + \
+        pdfPath.split("/")[-1][:-4] + ".json"
     if os.path.exists(targetCleanJsonPath):
         print("Clean JSON file already exists")
         return
@@ -42,9 +55,13 @@ def parseFile(pdfPath: str):
     for mdFile in os.listdir(pdfDirPath):
         if mdFile.endswith(".md") and mdFile != "README.md":
             os.remove(pdfDirPath + "/" + mdFile)
+    # write to the end of log.txt with timestamp
+    logHelper.successLog(pdfPath)
 
-# given a path to a folder, recursively parse all pdf files in it
+
 def parseFolder(folderPath: str):
+    # given a path to a folder, recursively parse all pdf files in it
+
     for item in sorted(os.listdir(folderPath)):
         itemPath = os.path.join(folderPath, item)
         if itemPath.endswith(".pdf"):
@@ -55,17 +72,24 @@ def parseFolder(folderPath: str):
             parseFolder(validPath)
         # print()
 
-# given a path to a xml file, parse the xml file and output a json file
+
 def parse(inputXml: str):
+    # given a path to a xml file, parse the xml file and output a json file
+
     pdfToXmlHelper.preParseXML(inputXml)
-    tree = ET.parse(inputXml)  # improvement: change to argument based input
+    try:
+        tree = ET.parse(inputXml)  # improvement: change to argument based input
+    except ET.ParseError:
+        print("Error: Parse XML failed, skipping", inputXml)
+        logHelper.errorLog(inputXml)
+        return -1
     root = tree.getroot()
 
     output = {}
     output["fullText"] = ""
     output["content"] = []
 
-    paragraphStart =xmlToJsonHelper.findOffset(root)
+    paragraphStart = xmlToJsonHelper.findOffset(root)
 
     for pageXml in root.iter("Page"):
         prevLineBBOX = None
@@ -74,8 +98,8 @@ def parse(inputXml: str):
             lineContent = ""
             lineXMLBBOX = lineXml.attrib["BBOX"]
             for wordXml in lineXml.iter("Word"):
-                word =xmlToJsonHelper.buildWord(wordXml)
-                lineContent =xmlToJsonHelper.updateText(lineContent, word)
+                word = xmlToJsonHelper.buildWord(wordXml)
+                lineContent = xmlToJsonHelper.updateText(lineContent, word)
             lineContent = lineContent.strip()
 
             # if the line is a graph, skip the rest of the page
@@ -95,6 +119,7 @@ def parse(inputXml: str):
                 prevLineBBOX = lineXMLBBOX
     fileIOHelper.outputDirtyJsonFile(inputXml, output)
 
+
 # main function
 if __name__ == "__main__":
     argv = sys.argv[1:]
@@ -102,7 +127,7 @@ if __name__ == "__main__":
     opts, args = getopt.getopt(argv, "chi:")
     for opt, arg in opts:
         if opt == "-h":
-            print("[Usage]: python3 xmlParser.py -i <inputPDF>")
+            print("[Usage]: python3 generalParser.py -i <inputPDF>")
             print("Result will be saved as a .json file in the results/ folder")
             sys.exit()
         elif opt == "-i":
@@ -116,4 +141,5 @@ if __name__ == "__main__":
     if not opts:
         cwd = os.getcwd()
         target_dir = os.path.join(cwd, config.defaultDir)
+        logHelper.logHeader()
         parseFolder(target_dir)

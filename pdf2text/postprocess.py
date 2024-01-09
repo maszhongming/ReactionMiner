@@ -9,6 +9,7 @@ import time
 
 device = torch.device(0)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+threshhold_value = 0.12
 
 # import pretrained model
 mpnet_tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-mpnet-base-v2")
@@ -16,7 +17,7 @@ mpnet_model = AutoModel.from_pretrained("sentence-transformers/all-mpnet-base-v2
 
 # driver function
 # clean noise information
-def cleanJson(jsonPath, threshold = 0.12):
+def cleanJson(jsonPath, threshold = threshhold_value):
     with open(jsonPath) as fin:
         contents = fin.read()
         # Strip any leading/trailing whitespace
@@ -66,7 +67,7 @@ def get_longest_string_first_half(paper):
     return longest
 
 # given a paragraph, filter noise information by cosine similarity score
-def clean_paragraphs(paragraphs, threshold = 0.12):
+def clean_paragraphs(paragraphs, threshold = threshhold_value):
     cleaned_paragraphs = []
     anchor_paragraph = get_longest_string_first_half(paragraphs)
     anchor_paragraphs = [anchor_paragraph]
@@ -76,7 +77,7 @@ def clean_paragraphs(paragraphs, threshold = 0.12):
             cleaned_paragraphs.append(paragraph)
             if len(anchor_paragraphs) == 5:
                 del anchor_paragraphs[0]
-                anchor_paragraphs.append(paragraph)
+                anchor_paragraphs.append(paragraph)        
     return cleaned_paragraphs
 
 # concatenate incomplete paragraphs across two pages
