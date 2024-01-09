@@ -12,7 +12,7 @@ from postprocess import cleanJson
 projectPath = os.path.dirname(os.path.abspath(__file__))
 
 
-def parseFile(pdfPath: str):
+def parseFile(pdfPath: str, logging=False):
     # given a path to a pdf file, parse the pdf file and output a json file
     # both symbol scraper and xml parser are run
 
@@ -70,23 +70,24 @@ def parseFile(pdfPath: str):
 
     print("Finished parsing", pdfPath, "\n")
     # write to the end of log.txt with timestamp
-    logHelper.successLog(pdfPath)
+    if logging:
+        logHelper.successLog(pdfPath)
 
 
-def parseFolder(folderPath: str):
+def parseFolder(folderPath: str, logging=False):
     # given a path to a folder, recursively parse all pdf files in it
 
     for item in sorted(os.listdir(folderPath)):
         itemPath = os.path.join(folderPath, item)
         if itemPath.endswith(".pdf"):
             validPath = fileIOHelper.validateFilename(itemPath)
-            parseFile(validPath)
+            parseFile(validPath, logging=logging)
         elif os.path.isdir(itemPath):
             validPath = fileIOHelper.validateFilename(itemPath)
-            parseFolder(validPath)
+            parseFolder(validPath, logging=logging)
 
 
-def parse(inputXml: str):
+def parse(inputXml: str, logging=False):
     # given a path to a xml file, parse the xml file and output a json file
 
     pdfToXmlHelper.preParseXML(inputXml)
@@ -94,7 +95,8 @@ def parse(inputXml: str):
         tree = ET.parse(inputXml)  # improvement: change to argument based input
     except ET.ParseError:
         print("Error: Parse XML failed, skipping", inputXml)
-        logHelper.errorLog(inputXml)
+        if logging:
+            logHelper.errorLog(inputXml)
         return -1
     root = tree.getroot()
 
@@ -139,7 +141,7 @@ def parse(inputXml: str):
 if __name__ == "__main__":
     argv = sys.argv[1:]
     inputfile = ""
-    opts, args = getopt.getopt(argv, "chi:")
+    opts, args = getopt.getopt(argv, "hcli:")
     for opt, arg in opts:
         if opt == "-h":
             print("[Usage]: python3 generalParser.py -i <inputPDF>")
@@ -150,7 +152,10 @@ if __name__ == "__main__":
             parseFile(inputfile)
         elif opt == "-c":
             fileIOHelper.cleanFolders()
+        elif opt == "-l":
+            target_dir = os.path.join(projectPath, config.defaultDir)
+            logHelper.logHeader()
+            parseFolder(target_dir, logging=True)
     if not opts:
         target_dir = os.path.join(projectPath, config.defaultDir)
-        logHelper.logHeader()
         parseFolder(target_dir)
