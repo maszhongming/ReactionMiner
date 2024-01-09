@@ -7,54 +7,68 @@ import helpers.xmlToJsonHelper as xmlToJsonHelper
 import helpers.fileIOHelper as fileIOHelper
 import helpers.logHelper as logHelper
 import config
-import datetime
 from postprocess import cleanJson
+
+projectPath = os.path.dirname(os.path.abspath(__file__))
 
 
 def parseFile(pdfPath: str):
     # given a path to a pdf file, parse the pdf file and output a json file
     # both symbol scraper and xml parser are run
 
-    # create temp dir if not exist
-    tempDirPath = "./xmlFiles/"
-    if not os.path.exists(tempDirPath):
-        os.mkdir(tempDirPath)
+    filename = os.path.basename(pdfPath)[: -len(".pdf")]
+    xmlPath = projectPath + "/xmlFiles/" + filename + ".xml"
+    rawJsonPath = projectPath + "/parsed_raw/" + filename + ".json"
+    cleanJsonPath = projectPath + "/results/" + filename + ".json"
+    pdfDirPath = os.path.dirname(pdfPath)
+    xmlDirPath = os.path.dirname(xmlPath)
+
+    # create xml dir if not exist
+    if not os.path.exists(xmlDirPath):
+        os.mkdir(xmlDirPath)
+
+    # step 1: parse pdf into xml using Symbol Scraper
+    print("Step 1: Parse PDF into XML using Symbol Scraper")
     # don't run SymbolScraper if xml already parsed
-    xmlPath = tempDirPath + pdfPath.split("/")[-1][:-4] + ".xml"
     if os.path.exists(xmlPath):
-        print("XML file already exists")
-        print("xmlpath", xmlPath)
+        print("XML file already exists:", xmlPath)
     else:
         print("Parsing", pdfPath)
-        os.system(
-            "SymbolScraper/bin/sscraper " + pdfPath + " " + tempDirPath + " > /dev/null"
-        )
+        suppressSymbolScraperOutput = False
+        outputOption = " > /dev/null" if suppressSymbolScraperOutput else ""
+        os.system(projectPath + "/SymbolScraper/bin/sscraper " + pdfPath + " " + xmlDirPath + outputOption)
         if not os.path.exists(xmlPath):
             print("Error: SymbolScraper failed to parse", pdfPath)
             logHelper.errorLog(pdfPath)
             return
-        print("Step 1: Parse PDF into XML using Symbol Scraper, written to:", xmlPath)
+        print("XML file written to:", xmlPath)
+
+    # step 2: parse xml into raw json
+    print("Step 2: Parse XML into raw JSON")
     # don't parse xml if json already exists
-    targetJsonPath = os.getcwd() + "/parsed_raw/" + pdfPath.split("/")[-1][:-4] + ".json"
-    if os.path.exists(targetJsonPath):
-        print("JSON file already exists")
+    if os.path.exists(rawJsonPath):
+        print("JSON file already exists:", rawJsonPath)
     else:
         parseExitCode = parse(xmlPath)
         if parseExitCode == -1:
             print("Error: Parse XML failed, skipping", pdfPath)
             return
-    targetCleanJsonPath = os.getcwd() + "/results/" + \
-        pdfPath.split("/")[-1][:-4] + ".json"
-    if os.path.exists(targetCleanJsonPath):
-        print("Clean JSON file already exists")
+
+    # step 3: clean json
+    print("Step 3: Clean JSON file")
+    # don't clean json if clean json already exists
+    if os.path.exists(cleanJsonPath):
+        print("Clean JSON file already exists:", cleanJsonPath)
         return
     else:
-        cleanJson(targetJsonPath)
+        cleanJson(rawJsonPath)
+
     # clean up useless .md files created by SymbolScraper
-    pdfDirPath = os.path.dirname(pdfPath)
-    for mdFile in os.listdir(pdfDirPath):
-        if mdFile.endswith(".md") and mdFile != "README.md":
-            os.remove(pdfDirPath + "/" + mdFile)
+    for file in os.listdir(pdfDirPath):
+        if file.endswith(".md") and file != "README.md":
+            os.remove(pdfDirPath + "/" + file)
+
+    print("Finished parsing", pdfPath, "\n")
     # write to the end of log.txt with timestamp
     logHelper.successLog(pdfPath)
 
@@ -70,7 +84,6 @@ def parseFolder(folderPath: str):
         elif os.path.isdir(itemPath):
             validPath = fileIOHelper.validateFilename(itemPath)
             parseFolder(validPath)
-        # print()
 
 
 def parse(inputXml: str):
@@ -117,7 +130,9 @@ def parse(inputXml: str):
                 prevLineBBOX = xmlToJsonHelper.combineLines(lineXMLBBOX, prevLineBBOX)
             else:
                 prevLineBBOX = lineXMLBBOX
-    fileIOHelper.outputDirtyJsonFile(inputXml, output)
+    # output raw json file
+    filename = os.path.basename(inputXml)[: -len(".xml")]
+    fileIOHelper.outputDirtyJsonFile(filename, output)
 
 
 # main function
@@ -135,11 +150,7 @@ if __name__ == "__main__":
             parseFile(inputfile)
         elif opt == "-c":
             fileIOHelper.cleanFolders()
-            # cwd = os.getcwd()
-            # target_dir = os.path.join(cwd, config.defaultDir)
-            # parseFolder(target_dir)
     if not opts:
-        cwd = os.getcwd()
-        target_dir = os.path.join(cwd, config.defaultDir)
+        target_dir = os.path.join(projectPath, config.defaultDir)
         logHelper.logHeader()
         parseFolder(target_dir)

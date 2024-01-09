@@ -1,11 +1,10 @@
 import json
-from tqdm import tqdm
 import torch
 import numpy as np
 from transformers import AutoTokenizer, AutoModel
 import math
 from helpers.fileIOHelper import outputCleanJsonFile
-import time 
+import os
 
 device = torch.device(0)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -17,7 +16,9 @@ mpnet_model = AutoModel.from_pretrained("sentence-transformers/all-mpnet-base-v2
 
 # driver function
 # clean noise information
-def cleanJson(jsonPath, threshold = threshhold_value):
+
+
+def cleanJson(jsonPath, threshold=threshhold_value):
     with open(jsonPath) as fin:
         contents = fin.read()
         # Strip any leading/trailing whitespace
@@ -28,10 +29,13 @@ def cleanJson(jsonPath, threshold = threshhold_value):
     cleaned_paragraphs = clean_paragraphs(content, threshold)
     complete_paragraphs = concat_paragraphs(cleaned_paragraphs)
     data["content"] = complete_paragraphs
-    outputCleanJsonFile(jsonPath, data)
+    filename = os.path.basename(jsonPath)[: -len(".json")]
+    outputCleanJsonFile(filename, data)
     return complete_paragraphs
 
 # obtain paragraph embedding
+
+
 def mpnet_emb(text):
     input_ids = (torch.tensor(mpnet_tokenizer.encode(text.lower(), max_length=512, truncation=True)).unsqueeze(0).to(device))
     input_ids = input_ids[:, :512]
@@ -47,6 +51,8 @@ def mpnet_emb(text):
     return emb
 
 # obtain cosine similarity score between anchor paragraphs and given paragraph
+
+
 def similarity(anchor_paragraphs, paragraph):
     # convert sequence to id
     paragraph_emb = mpnet_emb(paragraph)
@@ -57,6 +63,8 @@ def similarity(anchor_paragraphs, paragraph):
     return similarity / len(anchor_paragraphs)
 
 # given a paper, decide anchor paragraph by finding the longest paragraph in the first 1/3 of the paper
+
+
 def get_longest_string_first_half(paper):
     half_index = len(paper) // 3
     first_half = paper[:half_index]
@@ -67,7 +75,9 @@ def get_longest_string_first_half(paper):
     return longest
 
 # given a paragraph, filter noise information by cosine similarity score
-def clean_paragraphs(paragraphs, threshold = threshhold_value):
+
+
+def clean_paragraphs(paragraphs, threshold=threshhold_value):
     cleaned_paragraphs = []
     anchor_paragraph = get_longest_string_first_half(paragraphs)
     anchor_paragraphs = [anchor_paragraph]
@@ -77,10 +87,12 @@ def clean_paragraphs(paragraphs, threshold = threshhold_value):
             cleaned_paragraphs.append(paragraph)
             if len(anchor_paragraphs) == 5:
                 del anchor_paragraphs[0]
-                anchor_paragraphs.append(paragraph)        
+                anchor_paragraphs.append(paragraph)
     return cleaned_paragraphs
 
 # concatenate incomplete paragraphs across two pages
+
+
 def concat_paragraphs(paragraphs):
     complete_paragraphs = []
     paragraph = ""
@@ -89,18 +101,18 @@ def concat_paragraphs(paragraphs):
         if not current_segment:
             continue
         # a complete paragraph
-        if (( current_segment[-1] in terminals or idx== len(paragraphs) - 1 or idx==0 ) and paragraph == ""):  
+        if ((current_segment[-1] in terminals or idx == len(paragraphs) - 1 or idx == 0) and paragraph == ""):
             complete_paragraphs.append(current_segment)
         # middle of a paragraph
-        elif (current_segment[-1] not in terminals):  
+        elif (current_segment[-1] not in terminals):
             paragraph += current_segment
         # end of a paragraph
-        elif (current_segment[-1] in terminals):  
+        elif (current_segment[-1] in terminals):
             paragraph += current_segment
             complete_paragraphs.append(paragraph)
             paragraph = ""
     return complete_paragraphs
 
+
 if __name__ == "__main__":
     print("Using device:", DEVICE)
-

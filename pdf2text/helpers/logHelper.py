@@ -1,10 +1,12 @@
 import os
 import datetime
 
+projectPath = os.path.dirname(os.path.abspath(__file__)) + "/../"
+logPath = projectPath + "/log.txt"
+errorLogPath = projectPath + "/errorLog.txt"
+
 
 def logHeader():
-    logPath = os.getcwd() + "/log.txt"
-    errorLogPath = os.getcwd() + "/errorLog.txt"
     with open(logPath, "a") as logFile:
         currentTime = datetime.datetime.now()
         logFile.write(currentTime.strftime("%Y-%m-%d %H:%M:%S") + "start running the parser\n")
@@ -14,7 +16,6 @@ def logHeader():
 
 
 def successLog(pdfPath):
-    logPath = os.getcwd() + "/log.txt"
     with open(logPath, "a") as logFile:
         currentTime = datetime.datetime.now()
         basename = os.path.basename(pdfPath)
@@ -22,8 +23,7 @@ def successLog(pdfPath):
 
 
 def errorLog(pdfPath):
-    logPath = os.getcwd() + "/errorLog.txt"
-    with open(logPath, "a") as logFile:
+    with open(errorLogPath, "a") as logFile:
         currentTime = datetime.datetime.now()
         basename = os.path.basename(pdfPath)
         logFile.write(currentTime.strftime("%Y-%m-%d %H:%M:%S") + " " + basename + "\n")

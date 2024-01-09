@@ -7,3 +7,6 @@ Thrust1CheckpointJSON/
 Thrust1CheckpointPDF/
 parsed_raw/
 xmlFiles/
+results/
+errorLog.txt
+log.txt
