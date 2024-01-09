@@ -1,10 +1,12 @@
 import json
-import torch
-import numpy as np
-from transformers import AutoTokenizer, AutoModel
 import math
-from helpers.fileIOHelper import outputCleanJsonFile
 import os
+
+import numpy as np
+import torch
+from transformers import AutoModel, AutoTokenizer
+
+from .helpers.fileIOHelper import outputCleanJsonFile
 
 device = torch.device(0)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -25,10 +27,10 @@ def cleanJson(jsonPath, threshold=threshhold_value):
         contents = contents.strip()
         # Parse the JSON data
         data = json.loads(contents)
-        content = data["content"]
-    cleaned_paragraphs = clean_paragraphs(content, threshold)
+        jsonContents = data["contents"]
+    cleaned_paragraphs = clean_paragraphs(jsonContents, threshold)
     complete_paragraphs = concat_paragraphs(cleaned_paragraphs)
-    data["content"] = complete_paragraphs
+    data["contents"] = complete_paragraphs
     filename = os.path.basename(jsonPath)[: -len(".json")]
     outputCleanJsonFile(filename, data)
     return complete_paragraphs

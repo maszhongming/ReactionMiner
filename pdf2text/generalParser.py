@@ -1,13 +1,12 @@
-import xml.etree.ElementTree as ET
+import getopt
+import json
 import os
 import sys
-import getopt
-import helpers.pdfToXmlHelper as pdfToXmlHelper
-import helpers.xmlToJsonHelper as xmlToJsonHelper
-import helpers.fileIOHelper as fileIOHelper
-import helpers.logHelper as logHelper
-import config
-from postprocess import cleanJson
+import xml.etree.ElementTree as ET
+
+from . import config
+from .helpers import fileIOHelper, logHelper, pdfToXmlHelper, xmlToJsonHelper
+from .postprocess import cleanJson
 
 projectPath = os.path.dirname(os.path.abspath(__file__))
 
@@ -16,6 +15,11 @@ def parseFile(pdfPath: str, logging=False):
     # given a path to a pdf file, parse the pdf file and output a json file
     # both symbol scraper and xml parser are run
 
+    # check if pdf file exists
+    if not os.path.exists(pdfPath):
+        print("Error: File does not exist:", pdfPath)
+        return -1
+    pdfPath = os.path.abspath(pdfPath)
     filename = os.path.basename(pdfPath)[: -len(".pdf")]
     xmlPath = projectPath + "/xmlFiles/" + filename + ".xml"
     rawJsonPath = projectPath + "/parsed_raw/" + filename + ".json"
@@ -34,13 +38,13 @@ def parseFile(pdfPath: str, logging=False):
         print("XML file already exists:", xmlPath)
     else:
         print("Parsing", pdfPath)
-        suppressSymbolScraperOutput = False
+        suppressSymbolScraperOutput = True
         outputOption = " > /dev/null" if suppressSymbolScraperOutput else ""
         os.system(projectPath + "/SymbolScraper/bin/sscraper " + pdfPath + " " + xmlDirPath + outputOption)
         if not os.path.exists(xmlPath):
             print("Error: SymbolScraper failed to parse", pdfPath)
             logHelper.errorLog(pdfPath)
-            return
+            return -1
         print("XML file written to:", xmlPath)
 
     # step 2: parse xml into raw json
@@ -52,18 +56,18 @@ def parseFile(pdfPath: str, logging=False):
         parseExitCode = parse(xmlPath)
         if parseExitCode == -1:
             print("Error: Parse XML failed, skipping", pdfPath)
-            return
+            return -1
 
     # step 3: clean json
     print("Step 3: Clean JSON file")
     # don't clean json if clean json already exists
     if os.path.exists(cleanJsonPath):
         print("Clean JSON file already exists:", cleanJsonPath)
-        return
     else:
         cleanJson(rawJsonPath)
 
     # clean up useless .md files created by SymbolScraper
+    print('pdfDirPath', pdfDirPath)
     for file in os.listdir(pdfDirPath):
         if file.endswith(".md") and file != "README.md":
             os.remove(pdfDirPath + "/" + file)
@@ -72,6 +76,10 @@ def parseFile(pdfPath: str, logging=False):
     # write to the end of log.txt with timestamp
     if logging:
         logHelper.successLog(pdfPath)
+
+    # return the clean json object
+    with open(cleanJsonPath, "r") as f:
+        return json.load(f)
 
 
 def parseFolder(folderPath: str, logging=False):
@@ -102,7 +110,7 @@ def parse(inputXml: str, logging=False):
 
     output = {}
     output["fullText"] = ""
-    output["content"] = []
+    output["contents"] = []
 
     paragraphStart = xmlToJsonHelper.findOffset(root)
 
@@ -124,9 +132,9 @@ def parse(inputXml: str, logging=False):
             # update outputs
             output["fullText"] = xmlToJsonHelper.updateText(output["fullText"], lineContent)
             if xmlToJsonHelper.checkNewParagraph(lineXMLBBOX, prevLineBBOX, paragraphStart):
-                output["content"].append(lineContent)
+                output["contents"].append(lineContent)
             else:
-                output["content"][-1] = xmlToJsonHelper.updateText(output["content"][-1], lineContent)
+                output["contents"][-1] = xmlToJsonHelper.updateText(output["contents"][-1], lineContent)
             # update prevLineBBOX
             if xmlToJsonHelper.checkSameLine(lineXMLBBOX, prevLineBBOX):
                 prevLineBBOX = xmlToJsonHelper.combineLines(lineXMLBBOX, prevLineBBOX)

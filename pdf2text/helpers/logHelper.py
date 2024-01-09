@@ -1,5 +1,5 @@
-import os
 import datetime
+import os
 
 projectPath = os.path.dirname(os.path.abspath(__file__)) + "/../"
 logPath = projectPath + "/log.txt"

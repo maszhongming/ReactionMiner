@@ -1,5 +1,5 @@
-import os
 import json
+import os
 import shutil
 
 projectPath = os.path.dirname(os.path.abspath(__file__)) + "/../"

@@ -1,6 +1,7 @@
 import collections
-import config
 import re
+
+from .. import config
 
 tabWidth = config.tabWidth
 lineHeight = config.lineHeight
