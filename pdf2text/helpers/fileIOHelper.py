@@ -42,9 +42,15 @@ def cleanFolders():
     xml_directory = projectPath + "/xmlFiles/"
     result_directory = projectPath + "/parsed_raw/"
     final_result_directory = projectPath + "/results/"
+    logPath = projectPath + '/log.txt'
+    errorLogPath = projectPath + '/errorLog.txt'
     if os.path.exists(xml_directory):
         shutil.rmtree(xml_directory)
     if os.path.exists(result_directory):
         shutil.rmtree(result_directory)
     if os.path.exists(final_result_directory):
         shutil.rmtree(final_result_directory)
+    if os.path.exists(logPath):
+        os.remove(logPath)
+    if os.path.exists(errorLogPath):
+        os.remove(errorLogPath)
