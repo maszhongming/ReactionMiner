@@ -1,10 +1,10 @@
-# ReactIE-PDF-Conversion
+# PDF-Conversion
 
 This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. 
 
 ## Dependency
 
-This project depends on [zanibbi/SymbolScraper](https://github.com/zanibbi/SymbolScraper), which is packaged as a submodule.
+This module depends on [zanibbi/SymbolScraper](https://github.com/zanibbi/SymbolScraper), which is packaged as a submodule.
 
 To initialize submodule, first run `git submodule update --init` inside SymbolScraper directory. Then, run `make` to build the package.
 

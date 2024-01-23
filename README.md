@@ -21,7 +21,7 @@ Given a PDF file, please refer to [example.py](./example.py) to run our entire s
 ### Step 1: PDF-to-Text Conversion
 This step transforms a PDF file into text, saving a json file:
 
-```
+```python
 from pdf2text.generalParser import parseFile
 pdf_path = "copper_acetate.pdf" # PDF file given by the user
 result = parseFile(pdf_path)
@@ -34,7 +34,7 @@ The converted text is saved in `pdf2text/results`.
 ### Step 2: Text Segmentation
 Identifies paragraphs about chemical reactions and segments them:
 
-```
+```python
 from segmentation.segmentor import TopicSegmentor
 segmentor = TopicSegmentor()
 seg_texts = segmentor.segment(paragraphs)
@@ -43,7 +43,7 @@ seg_texts = segmentor.segment(paragraphs)
 ### Step 3: Reaction Extraction
 Extracts structured chemical reactions from each segment:
 
-```
+```python
 from extraction.extractor import ReactionExtractor
 extractor = ReactionExtractor('7b')
 reactions = extractor.extract(seg_texts)
