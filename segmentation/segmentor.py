@@ -7,7 +7,7 @@ import spacy
 from collections import Counter
 import numpy as np
 
-#load core english library
+# load core english library
 nlp = spacy.load("en_core_web_sm")
 
 
@@ -208,7 +208,12 @@ class TopicSegmentor:
         self.device = torch.device(device)
         # self.embedder = SentenceTransformer('bert-base-nli-stsb-mean-tokens')
         self.embedder = SentenceTransformer('allenai-specter')
-        self.keywords = keywords
+        if keywords == None:
+            with open('segmentation/Keywords.txt') as f:
+                kws = f.readlines()
+            self.keywords = [kw.strip() for kw in kws]
+        else:
+            self.keywords = keywords
         self.model = C99(window = 4, std_coeff = 1)
 
     def init_keyword(self, sent, keyword_dict):
@@ -263,56 +268,10 @@ class TopicSegmentor:
                     subres.append(context[t_id])
             if subres not in res:
                 res.append(subres)
-        
-        return res
+
+        return flat(res)
     
-def flat(doc):
-    res = []
-    for i in doc:
-        if isinstance(i,dict):
-            res.extend(flat(i['content']))
-        else:
-            res.append(i)
-    return res
+def flat(res):
+    return [segments for paragraphs in res for segments in paragraphs]
 
 
-
-if __name__ == "__main__":
-
-    segmentor = TopicSegmentor(device='cuda:0', keywords=['yields', 'yielded', 'yield', 'yielding', 'afforded', 'afford', 'affording', 'affords', 'produce', 'produces', 'produced', 'producing', "obtained"])
-    
-    ### load the file and flatten sentences###
-    # with open('./original/Copper_Acetate.json','r') as f:
-    #     sample = json.load(f)
-    # context = []
-    # for sec in ['introduction', 'results and discussion']:
-    #     context += sample[sec] 
-
-    # sample = []
-    # with open('./original/acs_data.jsonl', 'r', encoding='utf-8') as f:
-    #     for j in f.readlines():
-    #         j = json.loads(j)
-    #         sample.append(j)
-
-    # ## test of nested list ##
-    # context = []
-    # for i in sample[1296]['full_text']:
-    #     context += flat(i['content'])
-    #     # if isinstance(i['content'][0], dict):
-    #     #     print(i['content'])
-    #     #     res = flat(i['content'])
-    #     #     context += res
-    #     # else:
-    #     #     context += i['content']
-
-    context = ["When 0.5 equiv of Na2S2O8 was combined with 2 equiv of Selectfluor and 20 mol % AgNO3, the reaction time decreased from 2 h to 15 min for all substrates, forming alkyl fluorides in excellent yields. The significant acceleration of rate in the decarboxylative fluorination has led to a more efficient process, suggesting that this approach may be useful for 18F labeling. In the seminal work of Li, a Ag(II) fluoride is proposed as the active fluorine atom source in the reaction as opposed to Selectfluor. To support this supposition, Li and co-workers heated the combination of tert-butyl-2-ethyltetradecaneperox-oate and Selectfluor in a sealed tube to 120 \u00b0C for 2 h. When the reaction was run in acetone, a 22% yield of 3-fluoropentadecane was obtained, whereas when the reaction was run in 50:50 acetone/water, only a 4% of fluorinated product was obtained. On the basis of these findings, Li proposed that fluorine atom transfer from Selectfluor to alkyl radicals is unlikely to be involved in the Ag-catalyzed process. Selectfluor is reported to be unstable in water at high temperature, forming HF through reaction of the reagent and water. To examine this, we heated Selectfluor in acetone-d6/D2O to 120 \u00b0C in a sealed tube for 2 h. After cooling to room temperature, a sample was removed and examined by 1H NMR, showing that 80% of the reagent decomposed to the defluorinated chloromethyl derivative (see experiment were likely not conducive to testing whether radicals can abstract a fluorine atom from Selectfluor. In addition, if a Ag(II)-F intermediate was formed during the reaction, it can be present only in a catalytic amount (at most). During its formation, radicals are also generated in a catalytic amount, so the likelihood of a small amount of radical being fluorinated by a small amount of Ag(II)-F in the presence of excess Selectfluor is unlikely. Finally, there is a large body of evidence showing that Selectfluor and similar electrophilic fluorinating reagents react with radicals to form C-F bonds.",]
-
-    print(context)
-
-    res = segmentor.segment(context)
-
-    print("##### DISPLAY RESULTS #####")
-    for r_id, r in enumerate(res):
-        print("++++++" + str(r_id)+ "++++++")
-        print(" ".join(r))
-        print("\n")
