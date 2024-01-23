@@ -1,0 +1,3 @@
+[submodule "pdf2text/SymbolScraper"]
+    path = pdf2text/SymbolScraper
+    url = https://github.com/zanibbi/SymbolScraper.git

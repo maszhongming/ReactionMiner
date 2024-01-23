@@ -54,7 +54,7 @@ We fine-tune Llama-2-7B with LoRA, a technique for efficient fine-tuning, on our
 Explore the training details in [extraction/training](extraction/training).
 
 ## 📚 Citation
-If you find Reaction Miner helpful, kindly cite our paper:
+If you find Reaction Miner helpful, please kindly cite our paper:
 ```
 @inproceedings{zhong2023reaction,
   title={Reaction Miner: An Integrated System for Chemical Reaction Extraction from Textual Data},

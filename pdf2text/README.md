@@ -1,6 +1,6 @@
-# PDF-Conversion
+# PDF-to-Text Conversion
 
-This is the PDF converter for ReactIE project. The program takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections. 
+This is the PDF converter in the Reaction Miner System. The module takes in a PDF of chemistry paper and outputs a json file containing all the text information, parsed into corresponding sections.
 
 ## Dependency
 
