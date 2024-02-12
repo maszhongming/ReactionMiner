@@ -107,7 +107,12 @@ def concat_paragraphs(paragraphs):
             complete_paragraphs.append(current_segment)
         # middle of a paragraph
         elif (current_segment[-1] not in terminals):
-            paragraph += current_segment
+            if (idx == len(paragraphs)-1):
+                paragraph += current_segment
+                complete_paragraphs.append(paragraph)
+                paragraph = ""
+            else:
+                paragraph += current_segment
         # end of a paragraph
         elif (current_segment[-1] in terminals):
             paragraph += current_segment
