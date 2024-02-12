@@ -19,7 +19,10 @@ paragraphs = result['contents']  # Text with paragraph boundaries
 # Stage II: text segmentation
 print("########## Stage II: Text Segmentation ##########")
 segmentor = TopicSegmentor()
-seg_texts = segmentor.segment(paragraphs)
+if "_SI" in pdf_path:
+    res = segmentor.segment_si(paragraphs)
+else:
+    seg_texts = segmentor.segment(paragraphs)
 
 # Stage III: reaction extraction
 print("########## Stage III: Reaction Extraction ##########")

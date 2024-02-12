@@ -271,7 +271,12 @@ class TopicSegmentor:
 
         return flat(res)
     
+    def segment_si(self, context):
+        res = []
+        for para in context:
+            if self.init_keyword(para, self.keywords) and (para not in res):
+                res.append(para)
+        return res
+    
 def flat(res):
     return [segments for paragraphs in res for segments in paragraphs]
-
-
