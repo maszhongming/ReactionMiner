@@ -13,14 +13,14 @@ pdf_path = "copper_acetate.pdf"
 print("########## Stage I: PDF-to-Text ##########")
 
 result = parseFile(pdf_path)
-full_text = result['fullText'] # Text without paragraph information
+full_text = result['fullText']  # Text without paragraph information
 paragraphs = result['contents']  # Text with paragraph boundaries
 
 # Stage II: text segmentation
 print("########## Stage II: Text Segmentation ##########")
 segmentor = TopicSegmentor()
 if "_SI" in pdf_path:
-    res = segmentor.segment_si(paragraphs)
+    seg_texts = segmentor.segment_si(paragraphs)
 else:
     seg_texts = segmentor.segment(paragraphs)
 
