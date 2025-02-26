@@ -1,1 +1,15 @@
 training/*
+*/__pycache__/*
+*.pyc
+/ReactionMiner/pdf2text/xmlFiles/
+/ReactionMiner/pdf2text/parsed_raw/
+/ReactionMiner/pdf2text/results/
+/ReactionMiner/extraction/results/
+*.ipynb
+/pdf_files/
+*.bin
+*.pt
+*.ckpt
+*.pth
+*.egg-info
+/build/

@@ -1,11 +1,11 @@
-export CUDA_VISIBLE_DEVICES=0,1
+export CUDA_VISIBLE_DEVICES=6,7
 
-WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=12345 finetune.py \
-    --base_model "meta-llama/Llama-2-7b-hf" \
+WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=5946 finetune.py \
+    --base_model "meta-llama/Meta-Llama-3.1-8B" \
     --num_epochs 10 \
     --cutoff_len 2048 \
-    --data_path "chem_data/train_processed.jsonl" \
-    --output_dir "extractor-7b" \
+    --data_path "train_processed.jsonl" \
+    --output_dir "extractor-8b" \
     --lora_target_modules "[q_proj,k_proj,v_proj,o_proj,up_proj,down_proj,gate_proj,embed_tokens,lm_head]" \
     --lora_r 16 \
     --micro_batch_size 16 \

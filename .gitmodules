@@ -1,3 +1,9 @@
 [submodule "pdf2text/SymbolScraper"]
-    path = pdf2text/SymbolScraper
+    path = ReactionMiner/pdf2text/SymbolScraper
     url = https://github.com/zanibbi/SymbolScraper.git
+[submodule "ReactionMiner/pdf2text/--force"]
+	path = ReactionMiner/pdf2text/--force
+	url = https://github.com/zanibbi/SymbolScraper.git
+[submodule "SymbolScraper"]
+	path = ReactionMiner/pdf2text/SymbolScraper
+	url = https://github.com/zanibbi/SymbolScraper.git

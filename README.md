@@ -2,17 +2,20 @@
 **Official Repository for the EMNLP 2023 Demo Paper**  
 [Reaction Miner: An Integrated System for Chemical Reaction Extraction from Textual Data](https://aclanthology.org/2023.emnlp-demo.36/)
 
-## 🛠️ Environment
-To get started, install the necessary packages:
+## 🛠️ Environment and Installation
+For using the PDF-to-Text module in Reaction Miner, ensure Maven and Java 1.8 are installed.
+
+To get started, simply run
 ```
-pip install -r requirements.txt
+pip install git+https://github.com/maszhongming/ReactionMiner
+```
+
+Or install the necessary packages step-by-step:
+```
+git clone https://github.com/maszhongming/ReactionMiner
+cd ReactionMiner
+pip install . 
 python -m spacy download en_core_web_sm
-```
-For using the PDF-to-Text module in Reaction Miner, ensure Maven and Java 1.8 are installed. Then, execute:
-```
-cd pdf2text/SymbolScraper
-git submodule update --init
-make
 ```
 
 ## 📖 How to Use Reaction Miner
@@ -22,10 +25,11 @@ Given a PDF file, please refer to [example.py](./example.py) to run our entire s
 This step transforms a PDF file into text, saving a json file:
 
 ```python
-from pdf2text.generalParser import parseFile
-pdf_path = "copper_acetate.pdf" # PDF file given by the user
+from ReactionMiner.pdf2text.generalParser import parseFile
+
+pdf_path = "copper_acetate.pdf"  # PDF file given by the user
 result = parseFile(pdf_path)
-full_text = result['fullText'] # Text without paragraph information
+full_text = result['fullText']  # Text without paragraph information
 paragraphs = result['contents']  # Text with paragraph boundaries
 ```
 
@@ -35,7 +39,8 @@ The converted text is saved in `pdf2text/results`.
 Identifies paragraphs about chemical reactions and segments them:
 
 ```python
-from segmentation.segmentor import TopicSegmentor
+from ReactionMiner.segmentation.segmentor import TopicSegmentor
+
 segmentor = TopicSegmentor()
 seg_texts = segmentor.segment(paragraphs)
 ```
@@ -44,14 +49,15 @@ seg_texts = segmentor.segment(paragraphs)
 Extracts structured chemical reactions from each segment:
 
 ```python
-from extraction.extractor import ReactionExtractor
+from ReactionMiner.extraction.extractor import ReactionExtractor
+
 extractor = ReactionExtractor('7b')
 reactions = extractor.extract(seg_texts)
 ```
 
 ## 🤖 Model Training
 We fine-tune Llama-2-7B with LoRA, a technique for efficient fine-tuning, on our collected training set for our reaction extractor.
-Explore the training details in [extraction/training](extraction/training).
+Explore the training details in [extraction/training](ReactionMiner/extraction/training).
 
 ## 📚 Citation
 If you find Reaction Miner helpful, please kindly cite our paper:

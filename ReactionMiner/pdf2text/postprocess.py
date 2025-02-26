@@ -9,8 +9,7 @@ from transformers import AutoModel, AutoTokenizer
 from .helpers.fileIOHelper import outputCleanJsonFile
 from .config import threshhold_value
 
-device = torch.device(0)
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # import pretrained model
 mpnet_tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-mpnet-base-v2")
@@ -122,4 +121,4 @@ def concat_paragraphs(paragraphs):
 
 
 if __name__ == "__main__":
-    print("Using device:", DEVICE)
+    print("Using device:", device)
