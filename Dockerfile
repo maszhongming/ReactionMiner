@@ -41,6 +41,8 @@ COPY segmentation ./segmentation
 # pdf2text is needed by extraction for config.py
 COPY pdf2text/config.py ./extraction/config.py
 COPY example.py ./example.py
+COPY run_chemscraper.py ./run_chemscraper.py
+COPY chemscraper ./chemscraper
 
 # Run our docker entrypoint to execute the full workflow
 COPY entrypoint.sh ./entrypoint.sh

@@ -15,9 +15,15 @@ conda run --no-capture-output -n doc2json bash ./pdf2txt.sh
 
 # TODO: move files?
 
-# Run reactionminer example script in teh base conda env
+# Run reactionminer example script in the base conda env
 echo '###########################################'
 echo '#######    RUNNING ReactionMiner    #######'
 echo '###########################################'
 cd /workspace
 python ./example.py
+
+# Run ChemScraper using input PDF and ReactionMiner JSON output
+echo '###########################################'
+echo '########    RUNNING ChemScraper    ########'
+echo '###########################################'
+python ./run_chemscraper.py
